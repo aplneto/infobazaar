@@ -11,13 +11,16 @@ from rest_framework.request import HttpRequest
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from ..serializers import LoginSerializer, UserSerializer, \
+from ..serializers.profile import LoginSerializer, UserSerializer, \
     PasswordResetSerializer
 from ..models.profile import InvitationCode, MultiFactorCode
 
 
 @api_view(['POST'])
 def login(request: HttpRequest):
+    '''
+    Função que controla o fluxo de login da aplicação
+    '''
     login_data = LoginSerializer(data=request.data)
     if login_data.is_valid():
         user = auth.authenticate(
@@ -25,7 +28,7 @@ def login(request: HttpRequest):
             username=login_data.data["username"],
             password=login_data.data["password"]
         )
-        if user:
+        if user and user.profile.active:
             auth.login(request, user)
             return Response(status=200)
         else:
@@ -34,6 +37,9 @@ def login(request: HttpRequest):
 
 @api_view(["PUT"])
 def signup(request: HttpRequest):
+    '''
+    Função que controla o fluxo de registro
+    '''
     user_data = UserSerializer(data=request.data)
     if user_data.is_valid():
         users = User.objects.filter(
@@ -47,15 +53,23 @@ def signup(request: HttpRequest):
     return Response("Bad Request", status=400)
 
 @api_view(["GET"])
-def validate_code(request: HttpRequest, code: str):
+def validate_code(_: HttpRequest, code: str):
+    '''
+    Função que valida se um invitation code existe
+    '''
     get_object_or_404(InvitationCode, code=code)
     return Response(status=200)
 
 @api_view(["POST"])
 def request_password_reset(request: HttpRequest):
+    '''
+    Função responsável por enviar o e-mail de reset de senha
+    '''
     username = request.data["username"]
     email = request.data["email"]
-    user = get_object_or_404(User, username=username)
+    user = get_object_or_404(
+        User, username=username, is_superuser=False, is_staff=False
+    )
     user.multifactorcode.reset_code()
     user.multifactorcode.save()
     # Send password reset e-mail
@@ -80,6 +94,9 @@ def request_password_reset(request: HttpRequest):
 
 @api_view(["POST"])
 def password_reset(request: HttpRequest, code: str):
+    '''
+    Fluxo do reset de senha
+    '''
     mfa = get_object_or_404(MultiFactorCode, code=code)
     reset = PasswordResetSerializer(data=request.data)
     if reset.is_valid():
@@ -94,6 +111,9 @@ def password_reset(request: HttpRequest, code: str):
 
 @api_view(["POST"])
 def activate_account(request: HttpRequest, code: str):
+    '''
+    Fluxo da ativação de conta
+    '''
     mfa = get_object_or_404(MultiFactorCode, code=code)
     user = get_object_or_404(User, username=request.data["username"])
     if (mfa.user == user):

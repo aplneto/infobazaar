@@ -2,9 +2,10 @@ from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
-from .models.profile import Profile, InvitationCode
+from ..models.profile import Profile, InvitationCode
 
 class ProfileSerializer(serializers.ModelSerializer):
+    user = serializers.SlugRelatedField(read_only=True, slug_field="username")
     class Meta:
         model = Profile
         fields = "__all__"

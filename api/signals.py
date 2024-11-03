@@ -7,11 +7,13 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 from .models.profile import Profile, MultiFactorCode
+from .models.store import Wallet
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender: ..., instance: User, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+        Wallet.objects.create(user=instance)
         mfa = MultiFactorCode.objects.create(user=instance)
         mfa.reset_code()
         mfa.save()
@@ -39,4 +41,3 @@ def create_user_profile(sender: ..., instance: User, created, **kwargs):
                 html_message=html_content,
                 fail_silently=False
             )
-        
