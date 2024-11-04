@@ -1,0 +1,320 @@
+
+/* Animações */
+@keyframes background{
+  0%, 100%{
+    background: rgb(4, 4, 12);
+  }
+  50%{
+    background: rgb(0,0,0);
+  }
+}
+
+body {
+  /*Variaveis*/
+  --primary-color: #272932;
+  --secondary-color: #294b74;
+  --tertiary-color: #C69C72;
+  --quartenary-color:#710000;
+  --null-color: #F5F0F6;
+
+  /*Background*/
+  animation-name: background;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  transition: transform .2s linear;
+  
+  /*Padrão Body*/
+  color: #C69C72;
+  font-family: 'Arial', sans-serif;
+  max-width: 100vw;
+  height: 100vh;
+}
+
+.row{
+  max-width: 100vw;
+  width: 100%;
+}
+
+/*Formulários*/
+.form-input{
+  font-size: 15px;
+  padding: 8px;
+  font-weight: 500;
+  background-color: #400202;
+  color: #F5F0F6;
+  border: 2px solid #272932;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 15px;
+  &.form-search{
+    border-radius: 8px 0px 0px 8px!important;
+  }
+  &.form-span{
+    background-color: transparent;
+    border: 0px;
+    border-bottom: solid 3px #710000;
+    padding-bottom: 0;
+  }
+}
+textarea{
+  width: 100%;
+  height: 120px;
+}
+
+/* Botões */
+.primary-button{
+  background-color: #294b74;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px;
+  font-size: 16px;
+  color: white;
+  border-radius: 4px;
+  border: 2px solid #182c46;
+  transition: all ease .3s;
+  &:hover{
+    background-color: #70573d;
+    border-color: #3b2d1d;
+    color:#F5F0F6;
+  }
+}
+
+.secondary-button{
+  background-color: #272932;
+  color: #F5F0F6;
+  border: 2px #0a0c12 solid;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 7px;
+  margin: 0 5px;
+  transition: all ease .3s;
+  &:hover{
+    background-color: #70573d;
+    border-color: #3b2d1d;
+    color: #F5F0F6;
+  }
+  &.search-button{
+    margin: 0!important;
+    border: none!important;
+    border-radius: 0px 10px 10px 0px!important;
+  }
+}
+
+.li-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  color: #710000;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #710000;
+  border-radius: 7px;
+  font-size: 14px;
+  transition: all ease .3s;
+  &:hover{
+    background-color: #710000;
+    color: white;
+  }
+}
+
+/* Header */
+.header{
+  border: 3px groove #710000;
+  background-color: #3805053a;
+  padding: 3px;
+  .row-header{
+    .logo-header{
+      border-right: 3px groove #710000;
+      padding: 12px;
+    }
+    .menu-header{
+      display: flex;
+      justify-content: space-between;
+      ul{
+        display: flex;
+        padding: 12px;
+        margin: 0;
+        list-style: none;
+        padding-left: 0;
+        width: 75%;
+        li{
+          display: flex;
+          padding: 0 7px;
+        }
+      }
+    }
+    .login-header{
+      ul{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        list-style: none;
+        margin: 0;
+        height: 100%;
+      }
+    }
+  }
+}
+
+/*Messages*/
+.allowed-message, .denied-message{
+  .contain-message-allowed, .contain-message-denied{
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+    p{
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+  }
+  .contain-message-allowed{
+    border: solid 1px #2d7100;
+    background-color: #070f01;
+    p{
+      color: #2d7100;
+    }
+  }
+  .contain-message-denied{
+    border: solid 1px #850505;
+    background-color: #100202;
+    p{
+      color: #850505;
+    }
+  }
+}
+
+/*Welcome Page*/
+.container-index{
+  height: 88vh;
+  .contain-index{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    h1, h2{
+      margin-bottom: 15px;
+    }
+  }
+}
+
+/*Profile Page*/
+.container-profile{
+  align-content: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  .row-profile{
+    background-color: #3805053a;
+    border-radius: 35px;
+    .contain-profile{
+      padding: 40px;
+      border: double 10px #710000;
+      border-radius: 35px; 
+      .profile-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button{
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          figure{
+            margin-bottom: 0;
+            max-width: 170px;
+            max-height: 170px;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+      .profile-info{
+        padding-bottom: 20px;
+        .cash{
+          p{
+            color:#710000;
+            margin-bottom: 3px;
+            font-size: 14px;
+            font-weight: 500;
+          }
+        }
+      }
+      .profile-posts{
+        border-top: dotted 5px #710000;
+        padding-top: 20px;
+        .last-files{
+          .last-files-title{
+            h3{
+              font-size: 20px;
+              color: #C69C72;
+            }
+          }
+          table{
+            th{
+              padding: 0 5px;
+              color: #C69C72;
+              a{
+                color: #710000;
+                transition: all ease .3s;
+                &:hover{
+                  color: #294b74;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*Login Page*/
+.login-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 87vh;
+  .contain-login{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 20px;
+    background-color: #3805053a;
+    border-radius: 20px;
+    border: 5px double #710000;
+    .form-login{
+      .form-input{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      button{
+        padding: 5px;
+        width: 100px;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .get-password{
+    a{
+      color: #710000;
+      font-weight: 600;
+      font-size: 13px;
+    }
+  }
+}
+
+
+/*title padrão*/
+.title, .subtitle {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
