@@ -24,14 +24,15 @@ export default function SignupPage() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     if (passwordConfirmation == formData.password) {
-      AxiosInstance.get(`/invitation_code/${invitationCode}`)
+      AxiosInstance.get(`/invitation_code/${invitationCode}/`)
         .then((response: AxiosResponse) => {
           AxiosInstance.put("/", formData).finally(() => {
             navigate("");
           });
         })
         .catch((error: AxiosError) => {
-          alert("Wrong invitation code");
+          alert("You need a valid invitation code to register here");
+          navigate("");
         });
     }
   };

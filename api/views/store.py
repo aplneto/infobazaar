@@ -1,8 +1,9 @@
 from django.shortcuts import HttpResponse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, get_list_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import strip_tags
@@ -15,7 +16,7 @@ from uuid import uuid4
 from ..models.store import Product, ProductFile, CreditPurchaseReceipt, Receipt
 from ..serializers.store import ProductSerializer, ProductFileSerializer, \
     CreditPurchaseSerializer, ProductPurchaseRequestSerializer, \
-        ReceiptSerializer
+        ReceiptSerializer, ProductDisplaySerializer
 
 @login_required
 @api_view(["GET"])
@@ -156,3 +157,11 @@ login_required
 @api_view(["POST"])
 def associate_file_with_product(request: HttpRequest, pid: int):
     product = get_object_or_404(Product, pk=pid)
+
+@api_view(["GET"])
+def get_products_by_user(request: HttpRequest, username: str):
+    user = get_object_or_404(User, username=username)
+    products = get_list_or_404(Product, owner=user, public=True)
+    comments = []
+    serializer = ProductDisplaySerializer(products, many=True)
+    return Response(serializer.data, status=200)

@@ -26,6 +26,7 @@ class Product(models.Model):
     title = models.CharField(max_length=100, blank=False)
     public = models.BooleanField(default=False)
     categories = models.ManyToManyField(Category)
+    last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         if self.owner != None:

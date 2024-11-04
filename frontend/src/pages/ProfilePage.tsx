@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import App from "../App";
 import AxiosInstance from "../utils/AxiosInstance";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { useAuth } from "../AuthContext";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface UserProfile {
   id: number;
@@ -13,10 +13,22 @@ interface UserProfile {
   active: boolean;
 }
 
+type Product = {
+  id: number;
+  owner: string;
+  price: number;
+  description: string;
+  title: string;
+  categories: string[];
+  public: boolean;
+  last_updated: string;
+  comments: number;
+};
+
 export default function ProfilePage() {
   const { user } = useAuth();
-
-  let { state } = useLocation();
+  const navigate = useNavigate();
+  const { state } = useLocation();
 
   const [profileData, setProfileData] = useState({
     id: -1,
@@ -26,12 +38,22 @@ export default function ProfilePage() {
     active: false,
   });
 
+  const [productsArray, setproductsArray] = useState<Product[]>([]);
+
   useEffect(() => {
-    console.log(user);
     AxiosInstance.get<UserProfile>(
-      `/profile/${state.username ? state.username : user}`
+      `/profile/${state.username ? state.username : user}/`
+    )
+      .then((response: AxiosResponse) => {
+        setProfileData({ ...profileData, ...response.data });
+      })
+      .catch((error: AxiosError) => {
+        navigate("/");
+      });
+    AxiosInstance.get<Product[]>(
+      `/products/${state.username ? state.username : user}/`
     ).then((response: AxiosResponse) => {
-      setProfileData({ ...profileData, ...response.data });
+      setproductsArray(response.data);
     });
   }, []);
 
@@ -60,30 +82,33 @@ export default function ProfilePage() {
                   <thead>
                     <tr>
                       <th>Title</th>
-                      <th>Date of Publication</th>
+                      <th>Last Update</th>
                       <th>Price</th>
                       <th>Comments</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Product 1</td>
-                      <td>2024-11-01</td>
-                      <td>$50</td>
-                      <td>15</td>
-                    </tr>
-                    <tr>
-                      <td>Product 2</td>
-                      <td>2024-10-28</td>
-                      <td>$120</td>
-                      <td>32</td>
-                    </tr>
-                    <tr>
-                      <td>Product 3</td>
-                      <td>2024-10-20</td>
-                      <td>$75</td>
-                      <td>8</td>
-                    </tr>
+                    {productsArray.map((product: Product) => (
+                      <tr>
+                        <td>
+                          {" "}
+                          <Link to={`/product/${product.id}`}>
+                            {product.title}
+                          </Link>
+                        </td>
+                        <td>
+                          {" "}
+                          {[new Date(product.last_updated)]
+                            .map(
+                              (date: Date) =>
+                                `${date.toLocaleDateString()}-${date.toLocaleTimeString()}`
+                            )
+                            .join()}
+                        </td>
+                        <td>$ {product.price}</td>
+                        <td>{product.comments}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

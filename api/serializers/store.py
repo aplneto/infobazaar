@@ -9,6 +9,15 @@ class ProductSerializer(serializers.ModelSerializer):
             "owner", "price", "description", "title", "categories", "public"
         ]
 
+class ProductDisplaySerializer(ProductSerializer):
+    comments = serializers.SerializerMethodField("count_coments")
+    class Meta:
+        model = Product
+        fields = "__all__"
+
+    def count_coments(self, product: Product):
+        return 0
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category

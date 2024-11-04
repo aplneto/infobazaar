@@ -13,7 +13,7 @@ import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/LogoutPage";
 import ProfilePage from "./pages/ProfilePage";
 import SignupPage from "./pages/SignupPage";
-import DebugPage from "./pages/DebugPage";
+import ProductPage from "./pages/ProductPage";
 import RegistrationAlertPage from "./pages/RegistrationAlertPage";
 
 const router = createBrowserRouter([
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
   { path: "/profile", element: <ProfilePage /> },
   { path: "/signup", element: <SignupPage /> },
   { path: "/registration-success", element: <RegistrationAlertPage /> },
+  { path: "/product/:id", element: <ProductPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
