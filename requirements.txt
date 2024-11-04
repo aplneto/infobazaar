@@ -1,4 +1,7 @@
 django==5.1.2
 django-widget-tweaks==1.5.0
 python-dotenv==1.0.1
+pillow==11.0.
+django-cors-headers==4.6.0
+qrcode==8.0
 pillow==11.0.0

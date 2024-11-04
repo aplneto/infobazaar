@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from rest_framework.request import HttpRequest
 from rest_framework.response import Response
@@ -19,8 +20,16 @@ def flag(_: HttpRequest):
     return Response(f'<flag challenge="Welcome to the jungle">{f}</flag>')
 
 @api_view(["GET"])
-def get_profile(_: HttpRequest, username: str):
+def get_profile(request: HttpRequest, username: str):
     user = get_object_or_404(
         User, username=username, is_superuser=False, is_staff=False
     )
-    return Response(ProfileSerializer(user.profile).data)
+    return Response(
+        ProfileSerializer(user.profile, context={'request': request}).data
+    )
+
+@login_required
+@api_view(["GET"])
+def get_my_profile(request: HttpRequest):
+    if request.user.is_authenticated:
+        return Response({"username": request.user.username})

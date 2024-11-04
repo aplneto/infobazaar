@@ -30,10 +30,10 @@ def login(request: HttpRequest):
         )
         if user and user.profile.active:
             auth.login(request, user)
-            return Response(status=200)
+            return Response({"username": user.username}, status=200)
         else:
-            return Response("Unauthorized", status=403)
-    return Response("Bad request", status=400)
+            return Response({"error": "Unauthorized"}, status=403)
+    return Response({"error": "Bad request"}, status=400)
 
 @api_view(["PUT"])
 def signup(request: HttpRequest):
@@ -127,3 +127,8 @@ def activate_account(request: HttpRequest, code: str):
         user.profile.save()
         return Response(status=200)
     return Response("Forbidden", status=403)
+
+@api_view(["GET"])
+def make_logout(request: HttpRequest):
+    auth.logout(request)
+    return Response(status=200)

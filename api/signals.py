@@ -1,3 +1,5 @@
+from corsheaders.signals import check_request_enabled
+
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -63,3 +65,8 @@ def send_receipt(sender: ..., instance: Receipt, created: bool, **kwargs):
             html_message=html_content,
             fail_silently=False
         )
+
+def cors_allow_api_to_everyone(sender, request, **kwargs):
+    return request.path.startswith("/api/")
+
+check_request_enabled.connect(cors_allow_api_to_everyone)

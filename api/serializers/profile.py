@@ -6,9 +6,15 @@ from ..models.profile import Profile, InvitationCode
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(read_only=True, slug_field="username")
+    avatar = serializers.SerializerMethodField("get_avatar_url")
     class Meta:
         model = Profile
         fields = "__all__"
+    
+    def get_avatar_url(self, profile: Profile):
+        request = self.context.get("request")
+        url = profile.avatar.url
+        return request.build_absolute_uri(url)
 
 class InvitationCodeSerializer(serializers.ModelSerializer):
     class Meta:

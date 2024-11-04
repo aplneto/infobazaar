@@ -1,17 +1,19 @@
 from django.urls import path
-from .views.profile import flag, get_email, get_profile
+from .views.profile import flag, get_email, get_profile, get_my_profile
 from .views.auth import login, signup, validate_code, password_reset,\
-    activate_account, request_password_reset
+    activate_account, request_password_reset, make_logout
 from .views.store import get_product_or_product_list, get_product_file, \
     buy_credits, get_receipt, get_balance, get_my_products, purchase_product, \
     get_purchase_receipt, register_new_product
 
 urlpatterns = [
     # Profile related endpoints
+    path('me/', get_my_profile, name="me"),
     path('profile/<str:username>', get_profile, name="profile"),
     path('email/<str:username>', get_email, name='list_profiles'),
     path('flag/', flag, name='get_profile'),
     path('login/', login, name="login"),
+    path("logout/", make_logout, name="logout"),
     path('signup/', signup, name="signup"),
     path("invitation_code/<str:code>", validate_code, name="validate_code"),
     path("reset/", request_password_reset, name="request_reset"),

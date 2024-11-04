@@ -151,3 +151,8 @@ def register_new_product(request: HttpRequest):
     else:
         print(serializer)
     return Response(status=400)
+
+login_required
+@api_view(["POST"])
+def associate_file_with_product(request: HttpRequest, pid: int):
+    product = get_object_or_404(Product, pk=pid)
