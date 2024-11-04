@@ -6,7 +6,6 @@ from random import randint
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
-    credits = models.PositiveIntegerField(default=0)
     avatar = models.ImageField(default="default-profile.jpeg")
     active = models.BooleanField(default=False)
 

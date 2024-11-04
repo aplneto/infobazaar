@@ -1,11 +1,13 @@
 from rest_framework import serializers
-from ..models.store import Category, Product, ProductFile
+from ..models.store import Category, Product, ProductFile, Receipt
 
 class ProductSerializer(serializers.ModelSerializer):
     owner = serializers.SlugRelatedField(read_only=True, slug_field="username")
     class Meta:
         model = Product
-        fields = ["owner", "price", "description", "title", "categories"]
+        fields = [
+            "owner", "price", "description", "title", "categories", "public"
+        ]
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,3 +29,14 @@ class CreditPurchaseSerializer(serializers.Serializer):
         if attrs['discount'] > 1 or attrs['discount'] < 0:
             raise serializers.ValidationError("Discount value is invalid")
         return super().validate(attrs)
+
+class ProductPurchaseRequestSerializer(serializers.Serializer):
+    product = serializers.IntegerField(allow_null = False)
+
+class ReceiptSerializer(serializers.ModelSerializer):
+    buyer = serializers.SlugRelatedField(read_only=True, slug_field="username")
+    product = serializers.SlugRelatedField(read_only=True, slug_field="title")
+
+    class Meta:
+        model = Receipt
+        fields = "__all__"

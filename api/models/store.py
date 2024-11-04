@@ -28,12 +28,29 @@ class Product(models.Model):
     categories = models.ManyToManyField(Category)
 
     def __str__(self):
-        return f"{self.owner.username}'s {self.title}: ${self.price}"
+        if self.owner != None:
+            return f"{self.owner.username}'s {self.title}: ${self.price}"
+        else:
+            return f"{self.title}: ${self.price}"
+    
+    def user_has_access(self, user: User) -> bool:
+        if self.owner == user:
+            return True
+        
+        try:
+            Receipt.objects.get(buyer=user, product=self)
+        except Receipt.DoesNotExist:
+            return False
+        else:
+            return True
 
 class ProductFile(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     file = models.FileField(upload_to="project_files/")
     description = models.TextField(max_length=200, blank=True)
+
+    class Meta:
+        unique_together = (('product', 'id'))
 
     def __str__(self):
         return f"{self.file.name}: ({self.file.size})"

@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 from .models.profile import Profile, MultiFactorCode
-from .models.store import Wallet
+from .models.store import Wallet, Receipt
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender: ..., instance: User, created, **kwargs):
@@ -41,3 +41,25 @@ def create_user_profile(sender: ..., instance: User, created, **kwargs):
                 html_message=html_content,
                 fail_silently=False
             )
+
+@receiver(post_save, sender=Receipt)
+def send_receipt(sender: ..., instance: Receipt, created: bool, **kwargs):
+    if created:
+        purchase_context = {
+            "appname": settings.APPNAME,
+            "username": instance.buyer.username,
+            "product": instance.product.title
+        }
+
+        html_content = render_to_string(
+            template_name="product_receipt_email.html", context=purchase_context
+        )
+        plain_message = strip_tags(html_content)
+        send_mail(
+            subject="Purchase finalized",
+            message=plain_message,
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[instance.buyer.email],
+            html_message=html_content,
+            fail_silently=False
+        )

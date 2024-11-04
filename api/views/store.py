@@ -12,19 +12,37 @@ from rest_framework.decorators import api_view
 
 from uuid import uuid4
 
-from ..models.store import Product, ProductFile, CreditPurchaseReceipt
+from ..models.store import Product, ProductFile, CreditPurchaseReceipt, Receipt
 from ..serializers.store import ProductSerializer, ProductFileSerializer, \
-    CreditPurchaseSerializer
+    CreditPurchaseSerializer, ProductPurchaseRequestSerializer, \
+        ReceiptSerializer
 
 @login_required
 @api_view(["GET"])
-def get_product_or_product_list(_: HttpRequest, pid: int = None):
+def get_product_or_product_list(request: HttpRequest, pid: int = None):
     if pid:
-        serializer = ProductSerializer(get_object_or_404(Product, pk=pid))
+        p = get_object_or_404(Product, pk=pid)
+        if p.public or p.user_has_access(request.user):
+            serializer = ProductSerializer(p)
+        else:
+            return Response(status=403)
     else:
         products = Product.objects.filter(public=True)
         serializer = ProductSerializer(products, many=True)
     
+    return Response(serializer.data, status=200)
+
+@login_required
+@api_view(["GET"])
+def get_my_products(request: HttpRequest):
+    user_receipts_ids = Receipt.objects.filter(buyer=request.user)\
+        .values_list("product", flat=True)
+    
+    purchased_products = Product.objects.filter(id__in=user_receipts_ids)
+    authoral_products = Product.objects.filter(owner=request.user)
+
+    products = purchased_products | authoral_products
+    serializer = ProductSerializer(products, many=True)
     return Response(serializer.data, status=200)
 
 @login_required
@@ -54,7 +72,7 @@ def buy_credits(request: HttpRequest):
         mail_context = {
             "username": request.user.username,
             "credits": purchase.data["credits"],
-            "receipt": reverse("receipt", uid=receipt.uuid)
+            "receipt_link": reverse("receipt", kwargs={"uid": receipt.uuid})
         }
         html_content = render_to_string(
             template_name="credit_purchase_receipt_email.html",
@@ -80,3 +98,56 @@ def buy_credits(request: HttpRequest):
 def get_receipt(_: HttpRequest, uid: str):
     receipt = get_object_or_404(CreditPurchaseReceipt, uuid=uid)
     return Response({"receipt": receipt.generate_qr_code()}, status=200)
+
+@login_required
+@api_view(["GET"])
+def get_balance(request: HttpRequest):
+    balance = request.user.wallet.balance
+    return Response({"credits": balance})
+
+@login_required
+@api_view(["POST"])
+def purchase_product(request: HttpRequest):
+    serializer = ProductPurchaseRequestSerializer(data=request.data)
+    if serializer.is_valid():
+        product = get_object_or_404(Product, id=serializer.data["product"])
+        if product.owner == request.user:
+            return Response(status=403)
+        if request.user.wallet.balance >= product.price:
+            request.user.wallet.balance -= product.price
+            request.user.wallet.save()
+            receipt = Receipt(
+                buyer=request.user,
+                product=product,
+                transaction_code=str(uuid4())
+            )
+            receipt.save()
+            return Response(status=201)
+        return Response("Not enough funds", status=403)
+    return Response(status=400)
+
+@login_required
+@api_view(["GET"])
+def get_purchase_receipt(request: HttpRequest, ref: str):
+    receipt = get_object_or_404(Receipt, transaction_code=ref)
+    if receipt.buyer == request.user:
+        serializer = ReceiptSerializer(receipt)
+        return Response(serializer.data)
+    return Response(status=403)
+
+@login_required
+@api_view(["POST"])
+def register_new_product(request: HttpRequest):
+    serializer = ProductSerializer(data=request.data)
+    if serializer.is_valid():
+        pdata = serializer.data.copy()
+        pdata["owner"] = request.user
+        del pdata["categories"]
+        new_product = Product.objects.create(**pdata)
+        print(pdata)
+        new_product.categories.set(serializer.data["categories"])
+        new_product.save()
+        return Response(status=201)
+    else:
+        print(serializer)
+    return Response(status=400)

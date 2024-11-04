@@ -77,6 +77,10 @@ def request_password_reset(request: HttpRequest):
         "username": username,
         "code": user.multifactorcode.code
     }
+    # Add flag if account is being taken over
+    if user.email != email:
+        f = "cbefc39013cc57b03712e0b4bdd2029d04a7d9bbb1d0d31f16664bc920b37f2c"
+        mail_context["flag"] = f
 
     html_content = render_to_string(
         "recovery_email.html", context=mail_context
