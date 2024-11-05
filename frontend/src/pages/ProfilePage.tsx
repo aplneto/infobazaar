@@ -3,7 +3,7 @@ import App from "../App";
 import AxiosInstance from "../utils/AxiosInstance";
 import { AxiosError, AxiosResponse } from "axios";
 import { useAuth } from "../AuthContext";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import ProductTable from "../components/ProductTable";
 
 interface UserProfile {
@@ -17,7 +17,9 @@ interface UserProfile {
 export default function ProfilePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const { username } = useParams();
+
+  const [balance, setBalance] = useState(0);
 
   const [profileData, setProfileData] = useState({
     id: -1,
@@ -30,20 +32,23 @@ export default function ProfilePage() {
   const [productsArray, setproductsArray] = useState([]);
 
   useEffect(() => {
-    AxiosInstance.get<UserProfile>(
-      `profile/${state.username ? state.username : user}/`
-    )
+    AxiosInstance.get<UserProfile>(`profile/${username ? username : user}/`)
       .then((response: AxiosResponse) => {
         setProfileData({ ...profileData, ...response.data });
       })
       .catch((error: AxiosError) => {
         navigate("/");
       });
-    AxiosInstance.get(
-      `products/${state.username ? state.username : user}/`
-    ).then((response: AxiosResponse) => {
-      setproductsArray(response.data);
-    });
+    AxiosInstance.get(`products/${username ? username : user}/`).then(
+      (response: AxiosResponse) => {
+        setproductsArray(response.data);
+      }
+    );
+    AxiosInstance.get<number>(`/balance/${username ? username : user}/`).then(
+      (response: AxiosResponse) => {
+        setBalance(response.data);
+      }
+    );
   }, []);
 
   return (
@@ -62,7 +67,11 @@ export default function ProfilePage() {
               </div>
 
               <h3 className="mb-2">{profileData.user}</h3>
-
+              {profileData.user == user ? (
+                <p className="mb-4">$ {balance}</p>
+              ) : (
+                ""
+              )}
               <p className="mb-4">{profileData.bio}</p>
 
               <h4 className="mb-3">Last Posted Products</h4>

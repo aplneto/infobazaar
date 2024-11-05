@@ -138,7 +138,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = BASE_DIR / 'media/'
-MEDIAL_URL = '/media/'
+MEDIA_URL = '/media/'
 
 LOGIN_URL = '/api/login/'
 

@@ -1,11 +1,15 @@
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+
 from .views.profile import flag, get_email, get_profile, get_my_profile
 from .views.auth import login, signup, validate_code, password_reset,\
     activate_account, request_password_reset, make_logout
 from .views.store import get_public_products, get_product_file, \
     buy_credits, get_receipt, get_balance, get_my_products, purchase_product, \
     get_purchase_receipt, register_new_product, get_products_by_user, \
-    get_product_id, get_product_comments
+    get_product_id, get_product_comments, get_product_files
+
 
 urlpatterns = [
     # Profile related endpoints
@@ -30,10 +34,11 @@ urlpatterns = [
     path("purchase/<str:ref>/", get_purchase_receipt, name="purchase_receipt"),
     path("product/new/", register_new_product, name="new_product"),
     path("products/<str:username>/", get_products_by_user, name="user_product"),
+    path("files/<int:pid>/", get_product_files, name="product_file_list"),
     path("comments/<int:pid>/", get_product_comments, name="product_comments"),
 
     # Wallet related entpoins
     path("credits/", buy_credits, name="credits"),
     path("receipt/<str:uid>", get_receipt, name="receipt"),
     path("balance/", get_balance, name="balance"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

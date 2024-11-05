@@ -36,6 +36,15 @@ def get_product_id(request: HttpRequest, pid: int):
 
 @login_required
 @api_view(["GET"])
+def get_product_files(request: HttpRequest, pid: int):
+    p = get_object_or_404(Product, pk=pid)
+    if p.public or p.user_has_access(request.user):
+        products = get_list_or_404(ProductFile, product=pid)
+        serializer = ProductFileSerializer(products, many=True)
+        return Response(serializer.data, status=200)
+
+@login_required
+@api_view(["GET"])
 def get_my_products(request: HttpRequest):
     user_receipts_ids = Receipt.objects.filter(buyer=request.user)\
         .values_list("product", flat=True)

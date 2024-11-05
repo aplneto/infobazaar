@@ -36,8 +36,7 @@ function getAuthenticatedButtons(username: string, logout: () => void) {
       <ul className="navbar-nav ms-auto">
         <li className="nav-item">
           <Link
-            to="/profile"
-            state={username}
+            to={{ pathname: `/profile/${username}` }}
             className="nav-link active"
             aria-current="page"
           >

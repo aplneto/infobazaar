@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { formatDate } from "../utils/DateFormater";
 
 type Product = {
   id: number;
@@ -32,14 +33,7 @@ export default function ProductTable({ productsArray }: Props) {
             <td>
               <Link to={`/product/${product.id}`}>{product.title}</Link>
             </td>
-            <td>
-              {[new Date(product.last_updated)]
-                .map(
-                  (date: Date) =>
-                    `${date.toLocaleDateString()}-${date.toLocaleTimeString()}`
-                )
-                .join()}
-            </td>
+            <td>{formatDate(product.last_updated)}</td>
             <td>$ {product.price}</td>
             <td>{product.comments}</td>
           </tr>
