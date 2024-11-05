@@ -5,6 +5,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./AuthContext";
 
+import DebugPage from "./pages/DebugPage";
+
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import StorePage from "./pages/StorePage";
@@ -15,6 +17,7 @@ import ProfilePage from "./pages/ProfilePage";
 import SignupPage from "./pages/SignupPage";
 import ProductPage from "./pages/ProductPage";
 import RegistrationAlertPage from "./pages/RegistrationAlertPage";
+import VerificationPage from "./pages/VerificationPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
@@ -28,6 +31,8 @@ const router = createBrowserRouter([
   { path: "/signup", element: <SignupPage /> },
   { path: "/registration-success", element: <RegistrationAlertPage /> },
   { path: "/product/:id", element: <ProductPage /> },
+  { path: "/debug", element: <DebugPage /> },
+  { path: "/verify", element: <VerificationPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

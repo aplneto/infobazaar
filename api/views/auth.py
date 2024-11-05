@@ -28,9 +28,12 @@ def login(request: HttpRequest):
             username=login_data.data["username"],
             password=login_data.data["password"]
         )
-        if user and user.profile.active:
-            auth.login(request, user)
-            return Response({"username": user.username}, status=200)
+        if user:
+            if user.profile.active:
+                auth.login(request, user)
+                return Response({"username": user.username}, status=200)
+            else:
+                return Response(status=412)
         else:
             return Response({"error": "Unauthorized"}, status=403)
     return Response({"error": "Bad request"}, status=400)

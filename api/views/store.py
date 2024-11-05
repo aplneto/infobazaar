@@ -1,4 +1,3 @@
-from django.shortcuts import HttpResponse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -30,9 +29,8 @@ def get_public_products(request: HttpRequest):
 @api_view(["GET"])
 def get_product_id(request: HttpRequest, pid: int):
     p = get_object_or_404(Product, pk=pid)
-    if p.public or p.user_has_access(request.user):
-        serializer = ProductSerializer(p)
-        return Response(serializer.data, status=200)
+    serializer = ProductSerializer(p)
+    return Response(serializer.data, status=200)
 
 @login_required
 @api_view(["GET"])
@@ -42,6 +40,7 @@ def get_product_files(request: HttpRequest, pid: int):
         products = get_list_or_404(ProductFile, product=pid)
         serializer = ProductFileSerializer(products, many=True)
         return Response(serializer.data, status=200)
+    return Response(status=403)
 
 @login_required
 @api_view(["GET"])
@@ -122,7 +121,8 @@ def purchase_product(request: HttpRequest):
     serializer = ProductPurchaseRequestSerializer(data=request.data)
     if serializer.is_valid():
         product = get_object_or_404(Product, id=serializer.data["product"])
-        if product.owner == request.user:
+        if (product.owner == request.user or \
+            product.user_has_access(request.user)):
             return Response(status=403)
         if request.user.wallet.balance >= product.price:
             request.user.wallet.balance -= product.price

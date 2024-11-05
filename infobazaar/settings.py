@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "infobazaar.middleware.DisableCSRFForAllViewsMiddleware"
 ]
 
 ROOT_URLCONF = 'infobazaar.urls'
@@ -155,5 +156,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+CSRF_COOKIE_SECURE = False
 
 CORS_ALLOW_CREDENTIALS = True

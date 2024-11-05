@@ -27,12 +27,11 @@ export default function SignupPage() {
       AxiosInstance.get(`invitation_code/${invitationCode}/`)
         .then((response: AxiosResponse) => {
           AxiosInstance.put("signup/", formData).finally(() => {
-            navigate("");
+            navigate("/registration-success");
           });
         })
         .catch((error: AxiosError) => {
           alert("You need a valid invitation code to register here");
-          navigate("");
         });
     }
   };

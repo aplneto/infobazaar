@@ -44,11 +44,9 @@ export default function ProfilePage() {
         setproductsArray(response.data);
       }
     );
-    AxiosInstance.get<number>(`/balance/${username ? username : user}/`).then(
-      (response: AxiosResponse) => {
-        setBalance(response.data);
-      }
-    );
+    AxiosInstance.get("/balance/").then((response: AxiosResponse) => {
+      setBalance(response.data.credits);
+    });
   }, []);
 
   return (

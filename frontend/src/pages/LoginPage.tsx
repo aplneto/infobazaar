@@ -6,14 +6,8 @@ import App from "../App";
 import { AxiosError } from "axios";
 
 export default function LoginPage() {
-  const { user, login } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user !== null) {
-      navigate("/");
-    }
-  }, []);
 
   const [loginData, setLoginData] = useState({
     username: "",
@@ -34,8 +28,18 @@ export default function LoginPage() {
           navigate("/");
         }
       })
-      .catch((error) => {
-        alert("Something went wrong with your login attempt!");
+      .catch((error: AxiosError) => {
+        switch (error.status) {
+          case 403:
+            alert("Wrong Credentials!");
+            break;
+          case 412:
+            navigate(`/verify?username=${loginData.username}`);
+            break;
+          default:
+            alert("Something went wrong.");
+            break;
+        }
       });
   };
 

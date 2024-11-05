@@ -63,6 +63,9 @@ class Receipt(models.Model):
     bought_at = models.DateField(auto_now_add=True)
     message = models.CharField(max_length=400, blank=True)
 
+    class Meta:
+        unique_together = ('product', 'buyer')
+
     def __str__(self):
         return self.transaction_code
 
