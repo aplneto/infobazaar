@@ -22,7 +22,8 @@ def flag(_: HttpRequest):
 @api_view(["GET"])
 def get_profile(request: HttpRequest, username: str):
     user = get_object_or_404(
-        User, username=username, is_superuser=False, is_staff=False
+        User,
+        username=username
     )
     return Response(
         ProfileSerializer(user.profile, context={'request': request}).data

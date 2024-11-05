@@ -3,6 +3,7 @@ import AxiosInstance from "../utils/AxiosInstance";
 import { useAuth } from "../AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import App from "../App";
+import { AxiosError } from "axios";
 
 export default function LoginPage() {
   const { user, login } = useAuth();
@@ -26,12 +27,16 @@ export default function LoginPage() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    AxiosInstance.post("/login/", loginData).then((response) => {
-      if (response.status == 200) {
-        login(response.data?.username);
-        navigate("/");
-      }
-    });
+    AxiosInstance.post("login/", loginData)
+      .then((response) => {
+        if (response.status == 200) {
+          login(response.data?.username);
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        alert("Something went wrong with your login attempt!");
+      });
   };
 
   return (

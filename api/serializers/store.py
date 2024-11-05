@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from ..models.store import Category, Product, ProductFile, Receipt
+from ..models.store import Category, Product, ProductFile, Receipt, \
+    ProductComment
 
 class ProductSerializer(serializers.ModelSerializer):
     owner = serializers.SlugRelatedField(read_only=True, slug_field="username")
@@ -49,3 +50,11 @@ class ReceiptSerializer(serializers.ModelSerializer):
     class Meta:
         model = Receipt
         fields = "__all__"
+
+class ProductCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductComment
+        fields = ["author", "content", "product", "created_at"]
+
+class ProductCommentVisualizerSerializer(ProductCommentSerializer):
+    author = serializers.SlugRelatedField(read_only=True, slug_field="username")

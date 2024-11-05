@@ -13,25 +13,26 @@ from rest_framework.decorators import api_view
 
 from uuid import uuid4
 
-from ..models.store import Product, ProductFile, CreditPurchaseReceipt, Receipt
+from ..models.store import Product, ProductFile, CreditPurchaseReceipt, \
+    Receipt, ProductComment
 from ..serializers.store import ProductSerializer, ProductFileSerializer, \
     CreditPurchaseSerializer, ProductPurchaseRequestSerializer, \
-        ReceiptSerializer, ProductDisplaySerializer
+    ReceiptSerializer, ProductDisplaySerializer, \
+    ProductCommentVisualizerSerializer
+
+@api_view(["GET"])
+def get_public_products(request: HttpRequest):
+    products = Product.objects.filter(public=True)
+    serializer = ProductDisplaySerializer(products, many=True)
+    return Response(serializer.data, status=200)
 
 @login_required
 @api_view(["GET"])
-def get_product_or_product_list(request: HttpRequest, pid: int = None):
-    if pid:
-        p = get_object_or_404(Product, pk=pid)
-        if p.public or p.user_has_access(request.user):
-            serializer = ProductSerializer(p)
-        else:
-            return Response(status=403)
-    else:
-        products = Product.objects.filter(public=True)
-        serializer = ProductSerializer(products, many=True)
-    
-    return Response(serializer.data, status=200)
+def get_product_id(request: HttpRequest, pid: int):
+    p = get_object_or_404(Product, pk=pid)
+    if p.public or p.user_has_access(request.user):
+        serializer = ProductSerializer(p)
+        return Response(serializer.data, status=200)
 
 @login_required
 @api_view(["GET"])
@@ -162,6 +163,11 @@ def associate_file_with_product(request: HttpRequest, pid: int):
 def get_products_by_user(request: HttpRequest, username: str):
     user = get_object_or_404(User, username=username)
     products = get_list_or_404(Product, owner=user, public=True)
-    comments = []
     serializer = ProductDisplaySerializer(products, many=True)
+    return Response(serializer.data, status=200)
+
+@api_view(["GET"])
+def get_product_comments(request: HttpRequest, pid: int):
+    products = get_list_or_404(ProductComment, product=pid)
+    serializer = ProductCommentVisualizerSerializer(products, many=True)
     return Response(serializer.data, status=200)

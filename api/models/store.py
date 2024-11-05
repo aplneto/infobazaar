@@ -89,3 +89,9 @@ class CreditPurchaseReceipt(models.Model):
         image_bytes = io.BytesIO()
         code.save(image_bytes, format="png")
         return base64.b64encode(image_bytes.getvalue()).decode()
+
+class ProductComment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField(max_length=400)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now=True)
