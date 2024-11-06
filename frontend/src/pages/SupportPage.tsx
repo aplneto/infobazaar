@@ -28,8 +28,10 @@ export default function SupportPage() {
               <h2 className="text-center mb-4">Customer Support</h2>
               <p className="lead text-center">Talk to customer suport</p>
               <p>
-                You can send us an email at <b>help@infobazaar.store</b> if you
-                need any assistance, buy feel free to leave a message below.
+                Our customer support team is available 24/7 for your
+                convenience. Send us a message if you need any assistance. And
+                don't worry, we use state of the art AES cryptography, so all
+                your messages are safe with us.
               </p>
               <p className="text-center">
                 Don't forget to inform your name and email.
