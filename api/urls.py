@@ -8,7 +8,8 @@ from .views.auth import login, signup, validate_code, password_reset,\
 from .views.store import get_public_products, get_product_file, \
     buy_credits, get_receipt, get_balance, get_my_products, purchase_product, \
     get_purchase_receipt, register_new_product, get_products_by_user, \
-    get_product_id, get_product_comments, get_product_files
+    get_product_id, get_product_comments, get_product_files, \
+    upload_file_to_project
 
 
 urlpatterns = [
@@ -27,6 +28,7 @@ urlpatterns = [
 
     # Product related endpoints
     path("products/", get_public_products, name="product_list"),
+    path("upload/", upload_file_to_project, name="upload_file"),
     path("products/mine/", get_my_products, name="my_products"),
     path("product/<int:pid>/", get_product_id, name="product"),
     path("file/<int:fid>/", get_product_file, name="product_file"),

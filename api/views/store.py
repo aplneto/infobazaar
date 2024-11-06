@@ -8,7 +8,8 @@ from django.urls import reverse
 from django.utils.html import strip_tags
 from rest_framework.request import HttpRequest
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, parser_classes
+from rest_framework.parsers import MultiPartParser
 
 from uuid import uuid4
 
@@ -16,7 +17,7 @@ from ..models.store import Product, ProductFile, CreditPurchaseReceipt, \
     Receipt, ProductComment
 from ..serializers.store import ProductSerializer, ProductFileSerializer, \
     CreditPurchaseSerializer, ProductPurchaseRequestSerializer, \
-    ReceiptSerializer, ProductDisplaySerializer, \
+    ReceiptSerializer, ProductDisplaySerializer, FileUploadSerializer, \
     ProductCommentVisualizerSerializer
 
 @api_view(["GET"])
@@ -101,7 +102,6 @@ def buy_credits(request: HttpRequest):
         )
         return Response(status=200)
     else:
-        print(purchase.data)
         return Response(status=400)
 
 @api_view(["GET"])
@@ -141,10 +141,8 @@ def purchase_product(request: HttpRequest):
 @api_view(["GET"])
 def get_purchase_receipt(request: HttpRequest, ref: str):
     receipt = get_object_or_404(Receipt, transaction_code=ref)
-    if receipt.buyer == request.user:
-        serializer = ReceiptSerializer(receipt)
-        return Response(serializer.data)
-    return Response(status=403)
+    serializer = ReceiptSerializer(receipt)
+    return Response(serializer.data)
 
 @login_required
 @api_view(["POST"])
@@ -155,18 +153,21 @@ def register_new_product(request: HttpRequest):
         pdata["owner"] = request.user
         del pdata["categories"]
         new_product = Product.objects.create(**pdata)
-        print(pdata)
         new_product.categories.set(serializer.data["categories"])
         new_product.save()
         return Response(status=201)
-    else:
-        print(serializer)
     return Response(status=400)
 
-login_required
+@login_required
 @api_view(["POST"])
-def associate_file_with_product(request: HttpRequest, pid: int):
-    product = get_object_or_404(Product, pk=pid)
+@parser_classes([MultiPartParser])
+def upload_file_to_project(request: HttpRequest):
+    serializer = FileUploadSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=201)
+    return Response(status=400)
+
 
 @api_view(["GET"])
 def get_products_by_user(request: HttpRequest, username: str):

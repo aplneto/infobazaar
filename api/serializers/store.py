@@ -30,6 +30,11 @@ class ProductFileSerializer(serializers.ModelSerializer):
         model = ProductFile
         fields = "__all__"
 
+class FileUploadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductFile
+        fields = "__all__"
+
 class CreditPurchaseSerializer(serializers.Serializer):
     credits = serializers.IntegerField()
     value = serializers.IntegerField()

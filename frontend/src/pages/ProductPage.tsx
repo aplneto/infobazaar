@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import FileDownloadButtonList from "../components/FileDownloadButtonList";
 import { BuyButton } from "../components/BuyButton";
+import { useAuth } from "../AuthContext";
+import FileUploadComponent from "../components/FileUploadComponent";
 type Comment = {
   author: string;
   content: string;
@@ -25,6 +27,7 @@ type Product = {
 
 export default function ProductPage() {
   const { id } = useParams();
+  const { user } = useAuth();
 
   const [product, setProduct] = useState<Product>();
   const [comments, setComments] = useState<Comment[]>([]);
@@ -41,7 +44,6 @@ export default function ProductPage() {
         setComments(response.data);
       }
     );
-    console.log("Ok");
   }, []);
   return (
     <App>
@@ -62,6 +64,9 @@ export default function ProductPage() {
           <p>{product?.description}</p>
 
           <BuyButton product={product} id={parseInt((id && id) || "-1")} />
+          {product?.owner == user ? (
+            <FileUploadComponent product={(id && id) || ""} />
+          ) : null}
 
           <h4>Associated Files</h4>
           <FileDownloadButtonList project_id={id} />
