@@ -10,7 +10,7 @@ from ..serializers.profile import ProfileSerializer
 @api_view(['GET'])
 def get_email(_: HttpRequest, username: str):
     user = get_object_or_404(
-        User, username=username, is_superuser=False, is_staff=False
+        User, username=username
     )
     return Response({"email": user.email})
 
