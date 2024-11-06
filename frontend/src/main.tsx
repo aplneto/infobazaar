@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./AuthContext";
 
-import DebugPage from "./pages/DebugPage";
+import NewPassword from "./pages/NewPassword";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -18,6 +18,8 @@ import SignupPage from "./pages/SignupPage";
 import ProductPage from "./pages/ProductPage";
 import RegistrationAlertPage from "./pages/RegistrationAlertPage";
 import VerificationPage from "./pages/VerificationPage";
+import ResetPage from "./pages/ResetPage";
+import ConfirmEmailPage from "./pages/ConfirmEmailPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
@@ -31,8 +33,10 @@ const router = createBrowserRouter([
   { path: "/signup", element: <SignupPage /> },
   { path: "/registration-success", element: <RegistrationAlertPage /> },
   { path: "/product/:id", element: <ProductPage /> },
-  { path: "/debug", element: <DebugPage /> },
+  { path: "/new-password", element: <NewPassword /> },
   { path: "/verify", element: <VerificationPage /> },
+  { path: "/reset", element: <ResetPage /> },
+  { path: "/confirm", element: <ConfirmEmailPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

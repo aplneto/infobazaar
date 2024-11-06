@@ -79,8 +79,8 @@ export default function LoginPage() {
                 </div>
                 <div className="form-group">
                   <p className="text-center">
-                    By signing up you accept our{" "}
-                    <Link to="/disclaimer">terms of use</Link>.
+                    <Link to="/reset">Click here</Link> if you've forgot your
+                    password.
                   </p>
                 </div>
                 <div className="col-md-12 text-center ">
