@@ -1,0 +1,24 @@
+[
+    {"TIMESTAMP": "2024-09-22T14:03:10Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "I have a job for you. It's a high-profile one. A journalist by the name of AZ. We need to silence them. They’ve been digging too deep into things that are better left alone. Are you interested?"},
+    {"TIMESTAMP": "2024-09-22T14:12:32Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "Not sure, admin. You know I don't usually take jobs involving journalists. They tend to have too many connections. Why this one?"},
+    {"TIMESTAMP": "2024-09-22T14:17:01Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "AZ has been publishing reports on things that could get *a lot* of people hurt. I've been monitoring their work for months now. They’re too close to a story that could compromise us all. It's getting worse."},
+    {"TIMESTAMP": "2024-09-22T14:20:15Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "I get it, but I need more details. Who is this AZ, and where do I find them?"},
+    {"TIMESTAMP": "2024-09-22T14:25:04Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "AZ is a freelance journalist, late 30s. They’ve been on the radar for some time now, but recently started working on a series that could expose some of our contacts. I have their full dossier. The location is a house in the suburbs of New York. It's isolated, quiet."},
+    {"TIMESTAMP": "2024-09-22T14:30:58Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "I don’t like it. Journalists have a way of sniffing out danger. This could backfire. What exactly are they working on?"}, 
+    {"TIMESTAMP": "2024-09-22T14:35:46Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "It’s a series on a corrupt government contract. The people involved are high profile. AZ is getting closer to tying everything together. If they publish what they know, it could ruin everything we've built."},
+    {"TIMESTAMP": "2024-09-22T14:40:30Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "Alright, I’ll take the job. But I’ll need a 20% increase in payment. This one feels... messy."},
+    {"TIMESTAMP": "2024-09-22T14:45:18Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "Done. You'll have the payment upfront, in full. Just make sure the job is clean."},
+    {"TIMESTAMP": "2024-09-22T14:50:03Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "Understood. I’ll start preparing. I’ll need a couple of days to get into position."},
+    {"TIMESTAMP": "2024-09-27T09:10:55Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "I'm in position. The target is still in their residence. No major changes in the schedule yet. I’ll be watching."},
+    {"TIMESTAMP": "2024-10-10T18:25:37Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "Any updates? It’s been a while, and AZ is still publishing. We need to move before they get any more attention."},
+    {"TIMESTAMP": "2024-10-10T18:40:59Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "I’ve been keeping my distance, but I’m seeing more security around the house. They’re aware they’re being watched. I’m not sure how long they’ll stay there."},
+    {"TIMESTAMP": "2024-10-15T09:13:01Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "I made contact. AZ knows something’s off. They're paranoid, got some new tech. They've gone into hiding."},
+    {"TIMESTAMP": "2024-10-20T16:56:24Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "What do you mean, ‘hiding’? This wasn’t part of the plan."},
+    {"TIMESTAMP": "2024-10-20T17:05:48Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "I’m telling you, they’re gone. I don’t know how, but they’ve found out about the job. They’ve pulled every single security measure. They're out of reach for now."},
+    {"TIMESTAMP": "2024-10-25T14:25:11Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "How sure are you? AZ can’t just vanish like that."},
+    {"TIMESTAMP": "2024-10-25T14:33:47Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "I’m sure. They’ve erased everything. Whoever is helping them is good. They’ve gone underground."},
+    {"TIMESTAMP": "2024-10-30T11:55:22Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "We need to know where they are. Find them, no matter what it takes."},
+    {"TIMESTAMP": "2024-11-06T12:14:47Z", "TO": "admin", "FROM": "golden_coin", "CONTENT": "I’ve found them. AZ is hiding in a safe at -8.064573212336882, -34.87379971789414. They’re using an encrypted connection to send out their reports. It’s secure. But I have their location."},
+    {"TIMESTAMP": "2024-11-06T12:20:10Z", "TO": "golden_coin", "FROM": "admin", "CONTENT": "Good. You know what to do. Finish it. TAC{help-is-on-the-way:063c3a20c004fea3108933d2617b64810f47293c786a9202df2714841569740e}"}
+  ]
+  

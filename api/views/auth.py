@@ -71,7 +71,7 @@ def request_password_reset(request: HttpRequest):
     username = request.data["username"]
     email = request.data["email"]
     user = get_object_or_404(
-        User, username=username, is_superuser=False, is_staff=False
+        User, username=username
     )
     user.multifactorcode.reset_code()
     user.multifactorcode.save()

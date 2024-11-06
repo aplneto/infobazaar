@@ -7,6 +7,7 @@ import uuid
 from api.models.profile import Profile, InvitationCode, MultiFactorCode
 from api.models.store import Category, Product, ProductFile, Receipt, Wallet, \
     ProductComment
+from api.models.messages import Message
 from django.core.management import BaseCommand
 from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
@@ -157,3 +158,12 @@ class Command(BaseCommand):
                 all_receipts.append(receipt)
         
         ProductComment.objects.bulk_create(all_comments)
+
+        all_messages = []
+        with open(DATA_ROOT / "messages.json", 'r') as messages_json:
+            messages_aray = json.load(messages_json)
+            for message in messages_aray:
+                m = Message(content = json.dumps(message))
+                all_messages.append(m)
+        
+        Message.objects.bulk_create(all_messages)

@@ -30,6 +30,7 @@ def download_page():
         status=400
     )
 
-@app.get("/test")
+@app.get("/")
 def get():
-    return {"status": "ok"}
+    f = "22603b74c263bb249d22b1620a4f2d7c6a92900835749de21fd4ff29ed5e19d8"
+    return {"flag": "TAC{left-behind:" + f +"}"}

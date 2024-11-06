@@ -25,6 +25,8 @@ def get_profile(request: HttpRequest, username: str):
         User,
         username=username
     )
+    if user.is_superuser or user.is_staff:
+        return Response(status=403)
     return Response(
         ProfileSerializer(user.profile, context={'request': request}).data
     )
