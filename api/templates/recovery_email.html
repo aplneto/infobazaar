@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recover your password</title>
-</head>
-<body>
-    Hello, {{ username }}!<br>
-    To recover your password, use the code below:<br>
-    <br>
-    <b> {{ code }}</b><br>
-    <br>
-    If you did not request for a password recovery, be cool, you're perfectly safe with Info Bazaar and I'm absolutely sure that no one is trying to hack you or anything like that!
-    {% if flag %}
-    <flag challenge="Somebody's Watching Me"> {{ flag }} </flag>
-    {% endif %}
-</body>
+  </head>
+  <body>
+    Hello, {{ username }}!<br />
+    To recover your password, use the code below:<br />
+    <br />
+    <b> {{ code }}</b><br />
+    <br />
+    If you did not request for a password recovery, be cool, you're perfectly
+    safe with Info Bazaar and I'm absolutely sure that no one is trying to hack
+    you or anything like that! {% if flag %} {{ flag }} {% endif %}
+  </body>
 </html>
-
-

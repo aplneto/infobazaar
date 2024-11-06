@@ -11,7 +11,6 @@ def post_secure_message(request: HttpRequest):
     serializer = MessageSerializer(data=request.data)
     if serializer.is_valid():
         msg = serializer.save()
-        msg.encrypt()
         return Response({"uuid": msg.uuid}, status=201)
     return Response(status=400)
 

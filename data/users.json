@@ -1,0 +1,254 @@
+[
+    {
+        "id": 1,
+        "username": "darknetlord42",
+        "email": "darknetlord42@onionmail.com",
+        "password": "h4ckM3@2024"
+    },
+    {
+        "id": 2,
+        "username": "malwareking99",
+        "email": "malwareking99@onionmail.com",
+        "password": "M@lw4r3$King!"
+    },
+    {
+        "id": 3,
+        "username": "exploitdevx",
+        "email": "exploitdevx@onionmail.com",
+        "password": "expl0it4life!"
+    },
+    {
+        "id": 4,
+        "username": "data_dragon23",
+        "email": "data_dragon23@onionmail.com",
+        "password": "Dragon!123"
+    },
+    {
+        "id": 5,
+        "username": "h4ck3r_wizard",
+        "email": "h4ck3r_wizard@onionmail.com",
+        "password": "W1z@rdHack!"
+    },
+    {
+        "id": 6,
+        "username": "phish_master77",
+        "email": "phish_master77@onionmail.com",
+        "password": "P@ssw0rDf!sh"
+    },
+    {
+        "id": 7,
+        "username": "leak_monster",
+        "email": "leak_monster@onionmail.com",
+        "password": "L34k!nX!"
+    },
+    {
+        "id": 8,
+        "username": "crack_t0r2",
+        "email": "crack_t0r2@onionmail.com",
+        "password": "cr@ckT0rZz!"
+    },
+    {
+        "id": 9,
+        "username": "sn1p3r_h4ck3r",
+        "email": "sn1p3r_h4ck3r@onionmail.com",
+        "password": "SnipeR@ddict"
+    },
+    {
+        "id": 10,
+        "username": "rootkit_rider",
+        "email": "rootkit_rider@onionmail.com",
+        "password": "R00tk!tB@ckdoor"
+    },
+    {
+        "id": 11,
+        "username": "ransomwareboss",
+        "email": "ransomwareboss@onionmail.com",
+        "password": "R@ns0mBoss!"
+    },
+    {
+        "id": 12,
+        "username": "h4x0r_junkie",
+        "email": "h4x0r_junkie@onionmail.com",
+        "password": "JunkieH@ck@2024"
+    },
+    {
+        "id": 13,
+        "username": "zero_day_xploit",
+        "email": "zero_day_xploit@onionmail.com",
+        "password": "0Day$Exploit!"
+    },
+    {
+        "id": 14,
+        "username": "golden_coin",
+        "email": "golden_coin@onionmail.com",
+        "password": "T00lColl3ct@r!"
+    },
+    {
+        "id": 15,
+        "username": "backdoor_rus3r",
+        "email": "backdoor_rus3r@onionmail.com",
+        "password": "B@ckdoor!nR"
+    },
+    {
+        "id": 16,
+        "username": "spamb0t_op3r4t0r",
+        "email": "spamb0t_op3r4t0r@onionmail.com",
+        "password": "Sp@mb0t!!Op3r"
+    },
+    {
+        "id": 17,
+        "username": "cryptominer99",
+        "email": "cryptominer99@onionmail.com",
+        "password": "CryptoM1n3r!"
+    },
+    {
+        "id": 18,
+        "username": "databreach_expert",
+        "email": "databreach_expert@onionmail.com",
+        "password": "D@taBr34ch!"
+    },
+    {
+        "id": 19,
+        "username": "sk1ll3d_3xploit",
+        "email": "sk1ll3d_3xploit@onionmail.com",
+        "password": "3xpl0itSki11z"
+    },
+    {
+        "id": 20,
+        "username": "shad0w_pr0xy",
+        "email": "shad0w_pr0xy@onionmail.com",
+        "password": "Pr0xy_Sh@d0w"
+    },
+    {
+        "id": 21,
+        "username": "whatsapp_h4ck3r",
+        "email": "whatsapp_h4ck3r@onionmail.com",
+        "password": "Whats@ppH@ck"
+    },
+    {
+        "id": 22,
+        "username": "insider_threat90",
+        "email": "insider_threat90@onionmail.com",
+        "password": "Insid3rH@ck!"
+    },
+    {
+        "id": 23,
+        "username": "phish_t00ls4u",
+        "email": "phish_t00ls4u@onionmail.com",
+        "password": "F1shT00l$4u!"
+    },
+    {
+        "id": 24,
+        "username": "blackhat_anon",
+        "email": "blackhat_anon@onionmail.com",
+        "password": "Bl@ckH@t@N0n!"
+    },
+    {
+        "id": 25,
+        "username": "c0d3_cr@cker42",
+        "email": "c0d3_cr@cker42@onionmail.com",
+        "password": "C0d3Cr@ckzZ!"
+    },
+    {
+        "id": 26,
+        "username": "h0m3_br34ch3r",
+        "email": "h0m3_br34ch3r@onionmail.com",
+        "password": "Br34chErH@ck"
+    },
+    {
+        "id": 27,
+        "username": "dark_c0d3_r3f",
+        "email": "dark_c0d3_r3f@onionmail.com",
+        "password": "D@rkC0d3Ref!"
+    },
+    {
+        "id": 28,
+        "username": "root_exploit_hero",
+        "email": "root_exploit_hero@onionmail.com",
+        "password": "RootExpl0itH3r0!"
+    },
+    {
+        "id": 29,
+        "username": "malware_lab_dev",
+        "email": "malware_lab_dev@onionmail.com",
+        "password": "Malw@reL@bD3v"
+    },
+    {
+        "id": 30,
+        "username": "h4ck4th3t3rminal",
+        "email": "h4ck4th3t3rminal@onionmail.com",
+        "password": "H@ck3rT3rm!"
+    },
+    {
+        "id": 31,
+        "username": "script_k1d_1",
+        "email": "script_k1d_1@onionmail.com",
+        "password": "Scr1ptK1d!"
+    },
+    {
+        "id": 32,
+        "username": "d4rkn3t_h4x0r",
+        "email": "d4rkn3t_h4x0r@onionmail.com",
+        "password": "H@ckD@rkn3t!"
+    },
+    {
+        "id": 33,
+        "username": "pwnz0r_maniac",
+        "email": "pwnz0r_maniac@onionmail.com",
+        "password": "PwNz0rM@n1@c"
+    },
+    {
+        "id": 34,
+        "username": "overload_att4ck",
+        "email": "overload_att4ck@onionmail.com",
+        "password": "Ov3rL0ad@2024"
+    },
+    {
+        "id": 35,
+        "username": "d4rkn3t_trader",
+        "email": "d4rkn3t_trader@onionmail.com",
+        "password": "Tr@d3rD@rkn3t"
+    },
+    {
+        "id": 36,
+        "username": "h@cker_warl0ck",
+        "email": "h@cker_warl0ck@onionmail.com",
+        "password": "W@rl0ckHack!"
+    },
+    {
+        "id": 37,
+        "username": "silent_breach",
+        "email": "silent_breach@onionmail.com",
+        "password": "S1l3ntBreach!"
+    },
+    {
+        "id": 38,
+        "username": "root_pwn_master",
+        "email": "root_pwn_master@onionmail.com",
+        "password": "RootPwnM@st3r!"
+    },
+    {
+        "id": 39,
+        "username": "blackhat3r0",
+        "email": "blackhat3r0@onionmail.com",
+        "password": "Bl@ckH@tH3r0!"
+    },
+    {
+        "id": 40,
+        "username": "dataminer_stealth",
+        "email": "dataminer_stealth@onionmail.com",
+        "password": "D@t@min3rSt34lth"
+    },
+    {
+        "id": 41,
+        "username": "chip_stealer",
+        "email": "cs666@oniomail.com",
+        "password": "Bytemyass!123"
+    },
+    {
+        "id": 42,
+        "username": "root_cryptominer",
+        "email": "root_cryptominer@onionmail.com",
+        "password": "RootCrypt0miner!"
+    }
+]

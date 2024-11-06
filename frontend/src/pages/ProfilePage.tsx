@@ -66,7 +66,9 @@ export default function ProfilePage() {
 
               <h3 className="mb-2">{profileData.user}</h3>
               {profileData.user == user ? (
-                <p className="mb-4">$ {balance}</p>
+                <Link to="/credits" className="btn btn-link disabled">
+                  <p className="mb-4">$ {balance}</p>
+                </Link>
               ) : (
                 ""
               )}

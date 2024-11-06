@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import strip_tags
+from django.db.models import Q
 from rest_framework.request import HttpRequest
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, parser_classes
@@ -177,7 +178,11 @@ def upload_file_to_project(request: HttpRequest):
 @api_view(["GET"])
 def get_products_by_user(request: HttpRequest, username: str):
     user = get_object_or_404(User, username=username)
-    products = get_list_or_404(Product, owner=user, public=True)
+    # products = Product.objects.filter(Q(owner=user)|Q(public=True))
+    if (user == request.user):
+        products = get_list_or_404(Product, owner=user)
+    else:
+        products = get_list_or_404(Product, owner=user, public=True)
     serializer = ProductDisplaySerializer(products, many=True)
     return Response(serializer.data, status=200)
 

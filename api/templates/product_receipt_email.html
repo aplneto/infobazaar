@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your payment has been processed</title>
-</head>
-<body>
-    Hello, {{ username }}!<br>
-    Your payment has been processed and you can now access {{ product }}'s files.<br>
-    <br>
-    If you need any assistance, please contact us with the purchase's <a href="http://infobazaar/purchase/{{ receipt }}">receipt</a>.<br>
+  </head>
+  <body>
+    Hello, {{ username }}!<br />
+    Your payment has been processed and you can now access {{ product }}'s
+    files.<br />
+    <br />
+    If you need any assistance, please contact us with the purchase's
+    <a href="http://localhost:8000/receipt?uuid={{ receipt }}">receipt</a
+    >.<br />
     Thank you for using <b>{{ appname }}</b>'s services.
-</body>
+  </body>
 </html>
-
-

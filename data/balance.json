@@ -1,0 +1,170 @@
+[
+    {
+        "user_id": 1,
+        "balance": 1500
+    },
+    {
+        "user_id": 2,
+        "balance": 2500
+    },
+    {
+        "user_id": 3,
+        "balance": 3200
+    },
+    {
+        "user_id": 4,
+        "balance": 1800
+    },
+    {
+        "user_id": 5,
+        "balance": 0
+    },
+    {
+        "user_id": 6,
+        "balance": 1200
+    },
+    {
+        "user_id": 7,
+        "balance": 3000
+    },
+    {
+        "user_id": 8,
+        "balance": 4000
+    },
+    {
+        "user_id": 9,
+        "balance": 8500
+    },
+    {
+        "user_id": 10,
+        "balance": 2300
+    },
+    {
+        "user_id": 11,
+        "balance": 7000
+    },
+    {
+        "user_id": 12,
+        "balance": 1000
+    },
+    {
+        "user_id": 13,
+        "balance": 9500
+    },
+    {
+        "user_id": 14,
+        "balance": 4200
+    },
+    {
+        "user_id": 15,
+        "balance": 2700
+    },
+    {
+        "user_id": 16,
+        "balance": 6500
+    },
+    {
+        "user_id": 17,
+        "balance": 0
+    },
+    {
+        "user_id": 18,
+        "balance": 3800
+    },
+    {
+        "user_id": 19,
+        "balance": 4500
+    },
+    {
+        "user_id": 20,
+        "balance": 2200
+    },
+    {
+        "user_id": 21,
+        "balance": 1500
+    },
+    {
+        "user_id": 22,
+        "balance": 6000
+    },
+    {
+        "user_id": 23,
+        "balance": 1100
+    },
+    {
+        "user_id": 24,
+        "balance": 3500
+    },
+    {
+        "user_id": 25,
+        "balance": 7700
+    },
+    {
+        "user_id": 26,
+        "balance": 6400
+    },
+    {
+        "user_id": 27,
+        "balance": 5300
+    },
+    {
+        "user_id": 28,
+        "balance": 4800
+    },
+    {
+        "user_id": 29,
+        "balance": 8800
+    },
+    {
+        "user_id": 30,
+        "balance": 600
+    },
+    {
+        "user_id": 31,
+        "balance": 300
+    },
+    {
+        "user_id": 32,
+        "balance": 4100
+    },
+    {
+        "user_id": 33,
+        "balance": 700
+    },
+    {
+        "user_id": 34,
+        "balance": 850
+    },
+    {
+        "user_id": 35,
+        "balance": 7700
+    },
+    {
+        "user_id": 36,
+        "balance": 9500
+    },
+    {
+        "user_id": 37,
+        "balance": 5900
+    },
+    {
+        "user_id": 38,
+        "balance": 10000
+    },
+    {
+        "user_id": 39,
+        "balance": 9200
+    },
+    {
+        "user_id": 40,
+        "balance": 7100
+    },
+    {
+        "user_id": 41,
+        "balance": 600
+    },
+    {
+        "user_id": 42,
+        "balance": 0
+    }
+]

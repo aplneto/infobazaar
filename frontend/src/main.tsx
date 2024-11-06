@@ -21,6 +21,7 @@ import VerificationPage from "./pages/VerificationPage";
 import ResetPage from "./pages/ResetPage";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
 import SupportPage from "./pages/SupportPage";
+import PurchaseCredits from "./pages/PurchaseCredits";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
   { path: "/reset", element: <ResetPage /> },
   { path: "/confirm", element: <ConfirmEmailPage /> },
   { path: "/support", element: <SupportPage /> },
+  { path: "/credits", element: <PurchaseCredits /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

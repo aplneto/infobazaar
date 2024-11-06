@@ -14,4 +14,7 @@ class Message(models.Model):
     def encrypt(self):
         b = encrypt(self.content.encode(), settings.CRYPTO_KEY, settings.CRYPTO_NONCE)
         self.content = base64.urlsafe_b64encode(b).decode()
-        self.save()
+    
+    def save(self, force_insert = ..., force_update = ..., using = ..., update_fields = ...):
+        self.encrypt()
+        return super().save(force_insert, force_update, using, update_fields)

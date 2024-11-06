@@ -17,7 +17,7 @@ def get_email(_: HttpRequest, username: str):
 @api_view(['GET'])
 def flag(_: HttpRequest):
     f = "5434ff051aa72bf58a998aded8b5a0b8c6df8ae1493c245dc0aeadcc124fb53a"
-    return Response(f'<flag challenge="Welcome to the jungle">{f}</flag>')
+    return Response("TAC{welcome-to-the-jungle:" + f + "}")
 
 @api_view(["GET"])
 def get_profile(request: HttpRequest, username: str):

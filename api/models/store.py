@@ -86,7 +86,7 @@ class CreditPurchaseReceipt(models.Model):
             "value": self.value,
             "discount": self.discount,
             "user": self.user.username,
-            "flag": f"<flalg challenge=\"Baby You're A Rich Man\">{f}</flag>",
+            "flag": "TAC{baby-you-re-a-rich-man:" + "}",
         }
         code = qrcode.make(json.dumps(purchase_info))
         image_bytes = io.BytesIO()

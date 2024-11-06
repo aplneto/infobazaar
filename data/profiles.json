@@ -1,0 +1,254 @@
+[
+    {
+        "user": 1,
+        "bio": "Darknet operator and malware trading platform owner. Specializes in high-value exploits and data leaks.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 2,
+        "bio": "Professional malware developer. Known for creating ransomware variants.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 3,
+        "bio": "Exploit developer with a focus on zero-day vulnerabilities and custom attack vectors.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 4,
+        "bio": "Data breach expert who sells personal and financial data obtained through hacking.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 5,
+        "bio": "",
+        "avatar": "",
+        "active": false
+    },
+    {
+        "user": 6,
+        "bio": "Phishing tool creator. Offers a range of social engineering services.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 7,
+        "bio": "Specializes in providing data leaks from corporate and government breaches.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 8,
+        "bio": "Cracker of encrypted communication services and VPNs. Offers stealth hacking services.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 9,
+        "bio": "Hacker known for precise targeting of financial institutions and crypto exchanges.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 10,
+        "bio": "Expert in deploying rootkits and maintaining persistent access to compromised systems.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 11,
+        "bio": "Ransomware operator who demands large ransoms from corporations.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 12,
+        "bio": "Addicted to hacking, specializing in quick access methods and exploiting common vulnerabilities.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 13,
+        "bio": "Focuses on zero-day exploits for high-profile targets.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 14,
+        "bio": "Fixes problems only radical and inventive solutions can fix. TAC{psycho-killer-c-est-que-ce:ec8d207507650c8c9c4cac17ddb1f4b424dfef6b6ab9b20449cf7a0d5d13a416}",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 15,
+        "bio": "Offers custom backdoors for clients and assists in malicious remote access projects.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 16,
+        "bio": "Spam bot operator specializing in email flooding campaigns and phishing.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 17,
+        "bio": "",
+        "avatar": "",
+        "active": false
+    },
+    {
+        "user": 18,
+        "bio": "Data breach expert who specializes in financial data leaks.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 19,
+        "bio": "Specializes in exploiting advanced software vulnerabilities for system compromises.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 20,
+        "bio": "Anonymity specialist who helps cybercriminals hide their tracks online.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 21,
+        "bio": "WhatsApp hacker who can bypass encryption to intercept messages.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 22,
+        "bio": "Insider threat expert specializing in social engineering to access corporate systems.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 23,
+        "bio": "Provides phishing tools and services to infiltrate businesses.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 24,
+        "bio": "A blackhat hacker who offers full-suite malicious services.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 25,
+        "bio": "Cracker with expertise in code decryption and exploiting source code vulnerabilities.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 26,
+        "bio": "Known for home network breaches and selling personal data.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 27,
+        "bio": "Focuses on developing dark web cryptographic backdoors.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 28,
+        "bio": "Master of root exploits and underground access tools.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 29,
+        "bio": "Malware lab developer who creates advanced infection vectors for criminal groups.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 30,
+        "bio": "Hacker focused on terminal exploits and digital infiltrations.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 31,
+        "bio": "Script kiddie who tests simple hacking tools and shares them online.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 32,
+        "bio": "Darknet hacker known for selling exploits on hidden marketplaces.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 33,
+        "bio": "A maniacal attacker specializing in network overload and DDoS attacks.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 34,
+        "bio": "Focused on overwhelming servers with DDoS and brute-force attacks.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 35,
+        "bio": "A darknet trader who sells exploits, malware, and stolen data.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 36,
+        "bio": "An advanced hacker specializing in covert operations and cyberwarfare tactics.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 37,
+        "bio": "Stealth hacker who avoids detection while breaching high-profile systems.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 38,
+        "bio": "Root exploit specialist with years of experience breaking into systems.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 39,
+        "bio": "A hacker who focuses on black hat techniques for advanced cybercrime.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 40,
+        "bio": "Data miner who specializes in silent breaches and information extraction.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 41,
+        "bio": "Professional tracker that can give you information on anybody in the world.",
+        "avatar": "",
+        "active": true
+    },
+    {
+        "user": 42,
+        "bio": "",
+        "avatar": "",
+        "active": false
+    }
+]

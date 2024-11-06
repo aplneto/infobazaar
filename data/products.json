@@ -1,0 +1,290 @@
+[
+    {
+        "owner": 1,
+        "price": 450,
+        "description": "A powerful ransomware tool to lock down corporate networks. Get access to critical data with this weapon. 💀 Be ready for big paydays. 🔐",
+        "title": "LockDown-X",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-11-01"
+    },
+    {
+        "owner": 2,
+        "price": 1000,
+        "description": "Malware analysis service. Need help analyzing unknown malware? This service gets you fast, reliable results. 💻✍️ Just send the file and wait for the report.",
+        "title": "MalwareLabX",
+        "public": false,
+        "categories": "service",
+        "last_update": "2024-11-03"
+    },
+    {
+        "owner": 3,
+        "price": 500,
+        "description": "A collection of zero-day exploits for high-profile platforms. Get access to these if you're planning some big game hunting. 🚨",
+        "title": "ZeroDayVault",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-11-05"
+    },
+    {
+        "owner": 4,
+        "price": 150,
+        "description": "This service allows you to buy exclusive datasets from major leaks. Leaked financial records, personal info, credit cards... We got it all. 💸💼",
+        "title": "DataDump-X",
+        "public": true,
+        "categories": "leak",
+        "last_update": "2024-11-04"
+    },
+    {
+        "owner": 6,
+        "price": 300,
+        "description": "Spyware that can monitor communications, track keypresses, and extract passwords. Silent as a ghost. 🕵️‍♂️💻",
+        "title": "GhostKeylogger",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-10-29"
+    },
+    {
+        "owner": 7,
+        "price": 1000,
+        "description": "Professional phishing service for targeting corporations or high-value individuals. Get the best bait, and reel in your targets. 🎣💰",
+        "title": "PhishMaster Pro",
+        "public": false,
+        "categories": "service",
+        "last_update": "2024-11-02"
+    },
+    {
+        "owner": 8,
+        "price": 900,
+        "description": "An underground tool for cracking VPN accounts. Bypass encrypted traffic and get access to private networks. 🔓🔑",
+        "title": "VPNCracker Pro",
+        "public": false,
+        "categories": "tool",
+        "last_update": "2024-10-30"
+    },
+    {
+        "owner": 9,
+        "price": 950,
+        "description": "Stealth DDoS tool for hitting targets without detection. Perfect for shutting down websites or competitors. ⚡⚡💻",
+        "title": "StormBot-6",
+        "public": false,
+        "categories": "tool",
+        "last_update": "2024-11-01"
+    },
+    {
+        "owner": 10,
+        "price": 600,
+        "description": "Exclusive service to leak private messages, documents, and other sensitive info from government insiders. 🚨💼",
+        "title": "InsideLeaks",
+        "public": true,
+        "categories": "leak",
+        "last_update": "2024-11-05"
+    },
+    {
+        "owner": 12,
+        "price": 0,
+        "description": "A free tool that helps you anonymize your browsing and wipe your tracks online. 🕶️🌐 Stay undetected and out of the system's radar.",
+        "title": "StealthBrowser",
+        "public": true,
+        "categories": "tool",
+        "last_update": "2024-11-04"
+    },
+    {
+        "owner": 14,
+        "price": 750,
+        "description": "Ransomware-as-a-Service platform. Access encrypted payloads and take full control of your targets. 💣💰 Pay only after the job is done.",
+        "title": "CryptoRansom",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-10-28"
+    },
+    {
+        "owner": 1,
+        "price": 800,
+        "description": "Exploit kit designed to take advantage of a wide range of vulnerabilities. Be the first to deploy this advanced attack vector. 🚀💥",
+        "title": "ExploitKit-X",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-11-06"
+    },
+    {
+        "owner": 2,
+        "price": 700,
+        "description": "Need a custom tool to extract passwords from encrypted archives? This service cracks any file. 🔐💣",
+        "title": "DecryptorPro",
+        "public": false,
+        "categories": "service",
+        "last_update": "2024-11-03"
+    },
+    {
+        "owner": 3,
+        "price": 600,
+        "description": "Hack the system without being detected. Our custom backdoor is untraceable, even with full system scans. 🕵️‍♂️💻",
+        "title": "SilentBackdoor",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-11-04"
+    },
+    {
+        "owner": 4,
+        "price": 1200,
+        "description": "Massive data leak from a major corporation. Financial records, customer info, and sensitive business data. 📊💰 Download and sell.",
+        "title": "CorpLeak-X",
+        "public": true,
+        "categories": "leak",
+        "last_update": "2024-11-05"
+    },
+    {
+        "owner": 6,
+        "price": 150,
+        "description": "Phishing templates for businesses. Target corporate execs with these customizable phishing pages. 🧑‍💼📧",
+        "title": "PhishKit-4",
+        "public": false,
+        "categories": "tool",
+        "last_update": "2024-10-29"
+    },
+    {
+        "owner": 7,
+        "price": 500,
+        "description": "This service specializes in extracting encrypted chat logs and email communications. Silent, stealthy, and effective. 💬🔍",
+        "title": "CommsExtractor",
+        "public": false,
+        "categories": "service",
+        "last_update": "2024-11-02"
+    },
+    {
+        "owner": 8,
+        "price": 350,
+        "description": "Take down targeted servers with this advanced DDoS tool. Unstoppable and designed for maximum impact. ⚡⚡",
+        "title": "ServerStorm",
+        "public": false,
+        "categories": "tool",
+        "last_update": "2024-11-06"
+    },
+    {
+        "owner": 9,
+        "price": 900,
+        "description": "Data leak from an international crypto exchange. Includes wallets, transactions, and personal user data. 💸🔐",
+        "title": "CryptoLeak",
+        "public": true,
+        "categories": "leak",
+        "last_update": "2024-11-04"
+    },
+    {
+        "owner": 10,
+        "price": 1000,
+        "description": "Complete guide and tools for phishing social media accounts. Target all major platforms with these tools. 🎯📱",
+        "title": "SocialPhish",
+        "public": false,
+        "categories": "tool",
+        "last_update": "2024-11-05"
+    },
+    {
+        "owner": 11,
+        "price": 700,
+        "description": "Advanced RAT (Remote Access Tool) designed to give you complete control of any system. 🖥️🔒 Take over and hold power.",
+        "title": "NetRAT",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-11-01"
+    },
+    {
+        "owner": 12,
+        "price": 0,
+        "description": "A free tool that allows for anonymous browsing and system wipes. Perfect for staying off the grid. 🌐💨",
+        "title": "ZeroTrace",
+        "public": true,
+        "categories": "tool",
+        "last_update": "2024-11-04"
+    },
+    {
+        "owner": 13,
+        "price": 250,
+        "description": "Sell your exploit code or buy new ones. Secure marketplace for blackhat scripts and malware. 💻💰",
+        "title": "ExploitMarket",
+        "public": false,
+        "categories": "hiring",
+        "last_update": "2024-11-02"
+    },
+    {
+        "owner": 14,
+        "price": 600,
+        "description": "Access the most advanced cryptographic backdoors for your cybercrime operations. 💻🔓 Perfect for launching stealth attacks.",
+        "title": "CryptoCrack",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-10-30"
+    },
+    {
+        "owner": 15,
+        "price": 900,
+        "description": "Exclusive leak of user data from a popular streaming service. Accounts, payment info, and private emails. 🔓🎬",
+        "title": "StreamLeak",
+        "public": true,
+        "categories": "leak",
+        "last_update": "2024-11-05"
+    },
+    {
+        "owner": 16,
+        "price": 550,
+        "description": "A powerful DDoS botnet capable of taking down the biggest servers. Unstoppable. ⚡🔴",
+        "title": "BotnetStorm",
+        "public": false,
+        "categories": "tool",
+        "last_update": "2024-11-03"
+    },
+    {
+        "owner": 17,
+        "price": 0,
+        "description": "Free ransomware that encrypts files and demands no ransom – for testing only. 😈⚠️ Use at your own risk.",
+        "title": "FreeRansom",
+        "public": true,
+        "categories": "malware",
+        "last_update": "2024-11-01"
+    },
+    {
+        "owner": 18,
+        "price": 800,
+        "description": "A stealth service to extract passwords and gain full access to remote systems without a trace. 🖥️🔓",
+        "title": "StealthGrabber",
+        "public": false,
+        "categories": "service",
+        "last_update": "2024-10-31"
+    },
+    {
+        "owner": 19,
+        "price": 400,
+        "description": "Full access to financial data leaks from government databases. Gain insight into sensitive operations. 💵🔐",
+        "title": "GovLeak",
+        "public": true,
+        "categories": "leak",
+        "last_update": "2024-11-04"
+    },
+    {
+        "owner": 20,
+        "price": 950,
+        "description": "Crack open corporate email accounts and gain access to a treasure trove of business secrets. 🏢📧",
+        "title": "EmailCrack",
+        "public": false,
+        "categories": "malware",
+        "last_update": "2024-11-03"
+    },
+    {
+        "owner": 21,
+        "price": 500,
+        "description": "Selling fully decrypted credit card dumps with complete user data. Perfect for max profits. 💳💸",
+        "title": "CardDump-X",
+        "public": false,
+        "categories": "leak",
+        "last_update": "2024-11-02"
+    },
+    {
+        "owner": 14,
+        "price": 1000,
+        "description": "Have a problem that needs cleaning? I'm your person.",
+        "title": "Cleaning-1000",
+        "public": false,
+        "categories":"service",
+        "last_update": "2024-11-07"
+    }
+]
