@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import App from "../App";
 
 export default function HomePage() {
@@ -23,9 +24,9 @@ export default function HomePage() {
                   <p className="card-text">
                     Access a wide variety of confidential data.
                   </p>
-                  <a href="#" className="btn btn-outline-light">
+                  <Link to="/store" className="btn btn-outline-light">
                     Shop Data Leaks
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -36,22 +37,22 @@ export default function HomePage() {
                   <p className="card-text">
                     Acquire custom malware for all your needs.
                   </p>
-                  <a href="#" className="btn btn-outline-light">
+                  <Link to="/store" className="btn btn-outline-light">
                     Shop Malware
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
             <div className="col-lg-4 col-md-6 mb-4">
               <div className="card bg-dark border-light">
                 <div className="card-body">
-                  <h5 className="card-title">Shady Services</h5>
+                  <h5 className="card-title">24h Support</h5>
                   <p className="card-text">
-                    Hire expert hackers, crackers, and more.
+                    Ask for help via our secure messaging system.
                   </p>
-                  <a href="#" className="btn btn-outline-light">
-                    Shop Services
-                  </a>
+                  <Link to="/support" className="btn btn-outline-light">
+                    Send message
+                  </Link>
                 </div>
               </div>
             </div>

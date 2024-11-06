@@ -20,6 +20,7 @@ import RegistrationAlertPage from "./pages/RegistrationAlertPage";
 import VerificationPage from "./pages/VerificationPage";
 import ResetPage from "./pages/ResetPage";
 import ConfirmEmailPage from "./pages/ConfirmEmailPage";
+import SupportPage from "./pages/SupportPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
   { path: "/verify", element: <VerificationPage /> },
   { path: "/reset", element: <ResetPage /> },
   { path: "/confirm", element: <ConfirmEmailPage /> },
+  { path: "/support", element: <SupportPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

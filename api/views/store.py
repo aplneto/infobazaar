@@ -1,3 +1,6 @@
+import base64
+import pickle
+
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -17,8 +20,9 @@ from ..models.store import Product, ProductFile, CreditPurchaseReceipt, \
     Receipt, ProductComment
 from ..serializers.store import ProductSerializer, ProductFileSerializer, \
     CreditPurchaseSerializer, ProductPurchaseRequestSerializer, \
-    ReceiptSerializer, ProductDisplaySerializer, FileUploadSerializer, \
+    ProductDisplaySerializer, FileUploadSerializer, \
     ProductCommentVisualizerSerializer
+from ..crypto import encrypt
 
 @api_view(["GET"])
 def get_public_products(request: HttpRequest):
@@ -33,7 +37,6 @@ def get_product_id(request: HttpRequest, pid: int):
     serializer = ProductSerializer(p)
     return Response(serializer.data, status=200)
 
-@login_required
 @api_view(["GET"])
 def get_product_files(request: HttpRequest, pid: int):
     p = get_object_or_404(Product, pk=pid)
@@ -137,12 +140,14 @@ def purchase_product(request: HttpRequest):
         return Response("Not enough funds", status=403)
     return Response(status=400)
 
-@login_required
 @api_view(["GET"])
 def get_purchase_receipt(request: HttpRequest, ref: str):
     receipt = get_object_or_404(Receipt, transaction_code=ref)
-    serializer = ReceiptSerializer(receipt)
-    return Response(serializer.data)
+    pickled_data = pickle.dumps(receipt)
+    cipher_text = encrypt(
+        pickled_data, settings.CRYPTO_KEY, settings.CRYPTO_NONCE
+    )
+    return Response(base64.urlsafe_b64encode(cipher_text))
 
 @login_required
 @api_view(["POST"])

@@ -1,0 +1,4 @@
+wkhtmltopdf==0.2
+pdfkit==1.0.0
+gunicorn==23.0.0
+flask==3.0.3

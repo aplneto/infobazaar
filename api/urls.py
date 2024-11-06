@@ -10,7 +10,7 @@ from .views.store import get_public_products, get_product_file, \
     get_purchase_receipt, register_new_product, get_products_by_user, \
     get_product_id, get_product_comments, get_product_files, \
     upload_file_to_project
-
+from .views.messages import post_secure_message, read_secure_message
 
 urlpatterns = [
     # Profile related endpoints
@@ -43,4 +43,8 @@ urlpatterns = [
     path("credits/", buy_credits, name="credits"),
     path("receipt/<str:uid>", get_receipt, name="receipt"),
     path("balance/", get_balance, name="balance"),
+
+    # Messages
+    path("message/", post_secure_message, name="new_message"),
+    path("message/<str:uid>/", read_secure_message, name="message")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
