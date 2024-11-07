@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "set  \"GENERATE_SOURCEMAP=true\" && tsc && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/axios": "^0.9.36",
+    "@types/node": "^22.9.0",
     "axios": "^1.7.7",
     "axios-cookiejar-support": "^5.0.3",
     "bootstrap": "^5.2.3",

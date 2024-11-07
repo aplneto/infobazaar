@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import AxiosInstance from "../utils/AxiosInstance";
-import { AuthProvider, useAuth } from "../AuthContext";
+import { useAuth } from "../AuthContext";
 import { useEffect } from "react";
 
 function getUnauthenticatedButtons() {
