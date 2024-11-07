@@ -1,6 +1,6 @@
 FROM python:3.10.12
 
-COPY ./receipt-env/* /app
+COPY . /app
 WORKDIR /app
 
 RUN python3 -m pip install -r requirements.txt

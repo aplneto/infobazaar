@@ -11,7 +11,7 @@ services:
 
   receipt-service:
     build:
-      contex: ./receipt-env/
+      contex: ./receipt-env
       dockerfile: Dockerfile
     restart: always
     ports:
