@@ -11,3 +11,4 @@ gunicorn==23.0.0
 whitenoise==6.8.2
 django-storages==1.14.4
 boto3==1.35.55
+mysqlclient==2.2.5
