@@ -1,10 +1,8 @@
 FROM node:22-alpine
 
-RUN mkdir /home/infobazaar/
-ADD ./frontend/ /home/infobazaar/frontend/
-RUN rm -rf /home/infobazaar/receipt-env/
+ADD ./frontend/ /home/frontend/
 
-WORKDIR /home/infobazaar/frontend/
+WORKDIR /home/frontend/
 
 RUN npm instal --save axios
 RUN npm install typescript -g
@@ -33,14 +31,14 @@ ENV DJANGO_DB_HOST=""
 ENV DJANGO_DB_PORT="3306"
 
 ADD . /home/infobazaar/
-COPY --from=0 /home/infobazaar/frontend/ /home/infobazaar/frontend
+COPY --from=0 /home/frontend/ /home/frontend
 WORKDIR /home/infobazaar/
 RUN mkdir /home/infobazaar/static/
 RUN mkdir -p /home/infobazaar/media/project_files/
 
 RUN python3 -m pip install -r requirements.txt
-# RUN python3 manage.py makemigrations
-# RUN python3 manage.py migrate
+RUN python3 manage.py makemigrations
+RUN python3 manage.py migrate
 # RUN python3 manage.py populate
 # RUN python3 manage.py generate_project_files
 # RUN python3 manage.py import_images # ---> This step is optional, it adds the profile pictures of the users to them

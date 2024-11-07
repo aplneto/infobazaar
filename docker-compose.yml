@@ -8,3 +8,12 @@ services:
     ports:
       - 8666:8666
     tty: true
+
+  receipt-service:
+    build:
+      contex: ./receipt-env/
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8000:8000
+    tty: true
