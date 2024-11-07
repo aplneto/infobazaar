@@ -10,25 +10,15 @@ RUN npm run build
 
 FROM python:3.10.12
 
+ARG SECRE_KEY
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+ARG AWS_STORAGE_BUCKET_NAME
+ARG AWS_S3_ENDPOINT_URL
+ARG AWS_S3_REGION_NAME
+
 RUN apt update
 RUN apt install default-libmysqlclient-dev build-essential pkg-config -y
-
-ENV EMAIL_HOST_USER="noreply@infobazaar.store"
-ENV EMAIL_HOST_PASSWORD=""
-
-ENV SECRET_KEY="Emmanuel's Mosley's reallocates camomile hintedX"
-
-ENV DJANGO_SUPERUSER_USERNAME="admin"
-ENV DJANGO_SUPERUSER_PASSWORD="fbf56f61c36e54003a9ef147a02a2367eec0b696f61dd940bb6d7e256cf6c96e"
-ENV DJANGO_SUPERUSER_EMAIL=""
-
-ENV ALLOWED_HOSTS='infobazaar.store, localhost, 127.0.0.1'
-
-ENV DJANGO_DB_NAME="infobazaarappdb"
-ENV DJANGO_DB_USER="infobazaaradmin"
-ENV DJANGO_DB_PASSWORD=""
-ENV DJANGO_DB_HOST=""
-ENV DJANGO_DB_PORT="3306"
 
 ADD . /home/infobazaar/
 COPY --from=0 /home/frontend/ /home/infobazaar/frontend

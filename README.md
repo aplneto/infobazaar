@@ -24,6 +24,28 @@ Note que talvez seja preciso a instalação dos seguintes pacotes:
 
 No entanto, recomendo que utilize o arquivo docker-compose.yml
 
+### .env Example
+
+```
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+SECRET_KEY=
+DJANGO_SUPERUSER_USERNAME=
+DJANGO_SUPERUSER_PASSWORD=
+DJANGO_SUPERUSER_EMAIL=
+ALLOWED_HOSTS=
+DJANGO_DB_NAME=
+DJANGO_DB_USER=
+DJANGO_DB_PASSWORD=
+DJANGO_DB_HOST=
+DJANGO_DB_PORT=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_STORAGE_BUCKET_NAME=
+AWS_S3_ENDPOINT_URL=
+AWS_S3_REGION_NAME=
+```
+
 ## Nginx
 
 ```
