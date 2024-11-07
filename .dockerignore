@@ -1,5 +1,0 @@
-receipt-env/
-**/node_modules
-**/dist
-.env
-.aws
