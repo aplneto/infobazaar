@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Confirm your email</title>
-</head>
-<body>
-    Hello, {{ username }}! Welcome to {{ appname }}.<br>
-    In order for you to access our platform, you will first need to confirm your email address.<br>
-    Login and use the code below to validate your account:<br>
-    <br>
+  </head>
+  <body>
+    Hello, {{ username }}! Welcome to {{ appname }}.<br />
+    In order for you to access our platform, you will first need to confirm your
+    email address.<br />
+    Login and use the code below to validate your account:<br />
+    <br />
     <b>{{ code }}</b>
-    <br>
-    Best regards.
-</body>
+    <br />
+    Best regards. {% verbatim %}
+    TAC{welcome-to-the-jungle:5434ff051aa72bf58a998aded8b5a0b8c6df8ae1493c245dc0aeadcc124fb53a}
+    {% endverbatim %}
+  </body>
 </html>

@@ -31,7 +31,7 @@ ENV DJANGO_DB_HOST=""
 ENV DJANGO_DB_PORT="3306"
 
 ADD . /home/infobazaar/
-COPY --from=0 /home/frontend/ /home/frontend
+COPY --from=0 /home/frontend/ /home/infobazaar/frontend
 WORKDIR /home/infobazaar/
 RUN mkdir /home/infobazaar/static/
 RUN mkdir -p /home/infobazaar/media/project_files/

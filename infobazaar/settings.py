@@ -28,7 +28,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DJANGO_DEBUG', 'False') != 'False'
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS", "infobazaar.store")]
 MAIN_HOST = ALLOWED_HOSTS[0]
@@ -168,9 +168,6 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CORS_ALLOWED_ORIGINS = [("http://" + h) for h in ALLOWED_HOSTS]
-# CORS_ALLOWED_ORIGINS = [
-#     "http://infobazaar.store",
-# ]
 
 CSRF_TRUSTED_ORIGINS = [("http://" + h) for h in ALLOWED_HOSTS]
 CSRF_COOKIE_SECURE = False
