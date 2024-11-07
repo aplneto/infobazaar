@@ -13,7 +13,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     def get_avatar_url(self, profile: Profile):
         request = self.context.get("request")
-        return profile.avatar.url
+        return request.build_absolute_uri(profile.avatar.url)
 
 class InvitationCodeSerializer(serializers.ModelSerializer):
     class Meta:

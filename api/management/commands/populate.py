@@ -5,26 +5,16 @@ import time
 import uuid
 
 from api.models.profile import Profile, InvitationCode, MultiFactorCode
-from api.models.store import Category, Product, ProductFile, Receipt, Wallet, \
+from api.models.store import Category, Product, Receipt, Wallet, \
     ProductComment
 from api.models.messages import Message
 from django.core.management import BaseCommand
 from django.contrib.auth.models import User
-from django.core.files.base import ContentFile
 from django.conf import settings
 from django.db.models import Model
-from io import BytesIO
-from random import randint, random
+from random import random
 
 DATA_ROOT = settings.BASE_DIR / 'data/'
-
-def create_mock_binary_file(skip_header):
-    f = "cbfb10d180bb1ce4334d1f1c69ce119a70658ba0ac5f0b9c381103b2a2e24be1"
-    header = "TAC{unholy:" + f +"}"
-    size_kb = randint(256, 1024)
-    if skip_header:
-        return BytesIO(os.urandom(size_kb * 124))
-    return BytesIO(header.encode() + os.urandom((size_kb * 1024) - len(header)))
 
 def str_time_prop(start, end, time_format, prop):
     stime = time.mktime(time.strptime(start, time_format))
@@ -113,19 +103,6 @@ class Command(BaseCommand):
                 product.categories.add(Category.objects.get(pk=p['categories']))
                 product.save()
 
-                if p['categories'] in ["malware", "tool"]:
-                    for _ in range(randint(1, 3)):
-                        pf = ProductFile(
-                            product=product,
-                            description=p['description']
-                        )
-                        pf.file.save(
-                            p['title'].strip(" ") + str(uuid.uuid4()),
-                            ContentFile(
-                                create_mock_binary_file(p["public"]).getvalue()
-                            )
-                        )
-                        pf.save()
         
         all_comments = []
         all_receipts = []

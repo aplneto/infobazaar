@@ -35,7 +35,7 @@ class Product(models.Model):
             return f"{self.title}: ${self.price}"
     
     def user_has_access(self, user: User) -> bool:
-        if self.owner == user:
+        if self.owner == user or self.public:
             return True
         
         try:

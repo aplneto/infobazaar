@@ -31,12 +31,14 @@ def get_public_products(request: HttpRequest):
     serializer = ProductDisplaySerializer(products, many=True)
     return Response(serializer.data, status=200)
 
-@login_required
 @api_view(["GET"])
 def get_product_id(request: HttpRequest, pid: int):
     p = get_object_or_404(Product, pk=pid)
-    serializer = ProductSerializer(p)
-    return Response(serializer.data, status=200)
+    if p.user_has_access(request.user):
+        serializer = ProductSerializer(p)
+        return Response(serializer.data, status=200)
+    else:
+        return Response(status=403)
 
 @api_view(["GET"])
 def get_product_files(request: HttpRequest, pid: int):

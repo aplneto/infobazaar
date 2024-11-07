@@ -27,7 +27,8 @@ APPNAME = "InfoBazaar"
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+# DEBUG = os.environ.get('DJANGO_DEBUG', 'False') != 'False'
+DEBUG = True
 
 ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS", "infobazaar.store")]
 MAIN_HOST = ALLOWED_HOSTS[0]
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'corsheaders',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -150,10 +152,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / 'static/',
     BASE_DIR / 'frontend/dist/assets/',
+    BASE_DIR / 'frontend/public/'
 ]
 
 MEDIA_ROOT = BASE_DIR / 'media/'
-MEDIA_URL = '/media/'
+MEDIA_URL = 'api/media/'
 
 LOGIN_URL = '/api/login/'
 
@@ -164,12 +167,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-CORS_ALLOWED_ORIGINS = ALLOWED_HOSTS
+CORS_ALLOWED_ORIGINS = [("http://" + h) for h in ALLOWED_HOSTS]
 # CORS_ALLOWED_ORIGINS = [
 #     "http://infobazaar.store",
 # ]
 
-CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
+CSRF_TRUSTED_ORIGINS = [("http://" + h) for h in ALLOWED_HOSTS]
 CSRF_COOKIE_SECURE = False
 
 CORS_ALLOW_CREDENTIALS = True
@@ -179,9 +182,16 @@ CRYPTO_NONCE = b'\x93\xb1&aU\xc9\xb8\x1d'
 
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        # "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+AWS_ACCESS_KEY_ID=os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY=os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME=os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_ENDPOINT_URL=os.environ.get('AWS_S3_ENDPOINT_URL')
+AWS_S3_REGION_NAME=os.environ.get('AWS_S3_REGION_NAME')
