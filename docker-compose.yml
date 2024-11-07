@@ -1,0 +1,12 @@
+version: "3"
+services:
+  infobazaar:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8666:8666
+    tty: true
+    volumes:
+      - /var/www/html/media/:/home/infobazaar/media/

@@ -12,6 +12,7 @@ from django.core.management import BaseCommand
 from django.contrib.auth.models import User
 from django.core.files.base import ContentFile
 from django.conf import settings
+from django.db.models import Model
 from io import BytesIO
 from random import randint, random
 
@@ -38,11 +39,15 @@ class Command(BaseCommand):
     help = "Populates the database with the chatGPT generated mock data"
 
     def handle(self, *args, **kwargs):
+        if (User.objects.count() > 0):
+            print("Database already popylated!")
+            return
         with open(DATA_ROOT / "invitation.json", 'r') as invites_json:
             invites_array = json.load(invites_json)
             InvitationCode.objects.bulk_create(
                 [InvitationCode(code=c) for c in invites_array]
             )
+        
         
         all_users = []
         with open(DATA_ROOT / "users.json", 'r') as users_json:
@@ -167,3 +172,7 @@ class Command(BaseCommand):
                 all_messages.append(m)
         
         Message.objects.bulk_create(all_messages)
+    
+    @staticmethod
+    def check_existent_records(model: Model):
+        return model.objects.count() > 0

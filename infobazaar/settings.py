@@ -24,15 +24,13 @@ APPNAME = "InfoBazaar"
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0d6*4x@sv4^!5^98v(g0x&2xgo8r*7y$c)-l-0clkv%&^6wl*h'
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = [
-    'infobazaar.store'
-]
-
+ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS", "infobazaar.store")]
+MAIN_HOST = ALLOWED_HOSTS[0]
 
 # Application definition
 
@@ -86,10 +84,23 @@ WSGI_APPLICATION = 'infobazaar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ["DJANGO_DB_NAME"],
+        'USER': os.environ["DJANGO_DB_USER"],
+        'PASSWORD': os.environ["DJANGO_DB_PASSWORD"],
+        'HOST': os.environ["DJANGO_DB_HOST"],
+        'PORT': int(os.environ["DJANGO_DB_PORT"]),
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 
@@ -138,7 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static/',
-    BASE_DIR / 'frontend/dist/assets/'
+    BASE_DIR / 'frontend/dist/assets/',
 ]
 
 MEDIA_ROOT = BASE_DIR / 'media/'
@@ -153,11 +164,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://infobazaar.store",
-]
+CORS_ALLOWED_ORIGINS = ALLOWED_HOSTS
+# CORS_ALLOWED_ORIGINS = [
+#     "http://infobazaar.store",
+# ]
 
-CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
 CSRF_COOKIE_SECURE = False
 
 CORS_ALLOW_CREDENTIALS = True
@@ -166,6 +178,9 @@ CRYPTO_KEY = b'\x83y\xe6pI\xbbh{(wv\x8d\xcbvkX'
 CRYPTO_NONCE = b'\x93\xb1&aU\xc9\xb8\x1d'
 
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
