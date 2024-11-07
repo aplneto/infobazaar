@@ -8,5 +8,3 @@ services:
     ports:
       - 8666:8666
     tty: true
-    volumes:
-      - /var/www/html/media/:/home/infobazaar/media/
