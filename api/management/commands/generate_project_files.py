@@ -8,7 +8,7 @@ from io import BytesIO
 from random import randint
 from django.core.files.base import ContentFile
 
-from api.models.store import Product, ProductFile
+from api.models.store import Product, ProductFile, Category
 
 DATA_ROOT = settings.BASE_DIR / 'data/'
 
@@ -24,16 +24,18 @@ class Command(BaseCommand):
     help = "Populates the filebase with random mock data files"
 
     def handle(self, *args, **kwargs):
+        malware = Category.objects.get(name="malware")
+        tool = Category.objects.get(name="tool")
         for product in Product.objects.all():
-             if (product.categories.contains("malware") \
-                or product.categories.contains("tool")):
+             if (product.categories.contains(malware) \
+                or product.categories.contains(tool)):
                    for _ in range(randint(1, 3)):
                          pf = ProductFile(
                             product=product,
-                            description=product['description']
+                            description=product.description
                         )
-                         fname = product['title'].strip(" ") + str(uuid.uuid4())
-                         contents = create_mock_binary_file(product["public"])\
+                         fname = product.title.strip(" ") + str(uuid.uuid4())
+                         contents = create_mock_binary_file(product.public)\
                             .getvalue()
                          pf.file.save(fname, ContentFile(contents))
                          pf.save()

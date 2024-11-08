@@ -29,9 +29,6 @@ class Command(BaseCommand):
     help = "Populates the database with the chatGPT generated mock data"
 
     def handle(self, *args, **kwargs):
-        if (User.objects.count() > 0):
-            print("Database already popylated!")
-            return
         with open(DATA_ROOT / "invitation.json", 'r') as invites_json:
             invites_array = json.load(invites_json)
             InvitationCode.objects.bulk_create(

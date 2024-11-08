@@ -28,12 +28,13 @@ RUN mkdir -p /home/infobazaar/media/project_files/
 
 RUN python3 -m pip install -r requirements.txt
 RUN python3 manage.py makemigrations
-RUN python3 manage.py migrate
+RUN python3 manage.py migrate --fake
+# RUN python3 manage.py migrate
 # RUN python3 manage.py populate
 # RUN python3 manage.py generate_project_files
-# RUN python3 manage.py import_images # ---> This step is optional, it adds the profile pictures of the users to them
+# RUN python3 manage.py import_pictures # ---> This step is optional, it adds the profile pictures of the users to them
 RUN python3 manage.py collectstatic --no-input
-RUN python3 manage.py createsuperuser --no-input
+# RUN python3 manage.py createsuperuser --no-input
 
 EXPOSE 8666
 ENTRYPOINT [ "gunicorn", "--workers", "16", "--bind", "0.0.0.0:8666", "infobazaar.wsgi:application" ]
