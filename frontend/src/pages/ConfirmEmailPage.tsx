@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import App from "../App";
 import AxiosInstance from "../utils/AxiosInstance";
 import { FormEvent } from "react";
@@ -21,6 +21,7 @@ function obfuscateEmail(email: string) {
 }
 
 export default function ConfirmEmailPage() {
+  const navigate = useNavigate();
   const location = useLocation();
 
   const handleClick = (event: FormEvent) => {
@@ -29,6 +30,11 @@ export default function ConfirmEmailPage() {
     AxiosInstance.post("reset/", {
       username: location.state.username,
       email: location.state.email,
+    }).then(() => {
+      alert(
+        "We've sent you an e-mail with instructions on how to recover your password."
+      );
+      navigate(`/new-password?username?=${location.state.username}`);
     });
   };
 

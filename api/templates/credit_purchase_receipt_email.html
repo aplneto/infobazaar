@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Congratulations on your purchase</title>
-</head>
-<body>
-    Hello, {{ username }}.<br>
-    Your order has been processed and {{ credits }} credits have been added to your balance<br>
-    In case of any problems, please use <a href="http://infobazaar.store/receipt/{{ receipt_link }}">this receipt</a> to contact us.<br>
-    <br>
+  </head>
+  <body>
+    Hello, {{ username }}.<br />
+    Your order has been processed and {{ credits }} credits have been added to
+    your balance<br />
+    In case of any problems, please use
+    <a href="https://www.infobazaar.store/recepit?uuid={{ uuid }}"
+      >this receipt</a
+    >
+    to contact us.<br />
+    <br />
     Best regards.
-</body>
+  </body>
 </html>

@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Maintenance server
+  description: API for the new maintenance server
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+# TAC{left-behind:22603b74c263bb249d22b1620a4f2d7c6a92900835749de21fd4ff29ed5e19d8}
+paths:
+  /:
+    get:
+      summary: health check
+      description: returns the status of the maintenance server
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "ok"
+
+  /ybnq_cl:
+    get:
+      summary: legacy
+      description: old updater was shit, new one uses encryption and will load the older database quicker. For now, I've only moved the purchase receipts to the new db.
+      parameters:
+        - in: query
+          name: uuid
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The UUID for which to retrieve data
+      responses:
+        "200":
+          description: Successful response with plain text content
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Data for UUID: <uuid>"
+        "400":
+          description: Bad Request - UUID missing or invalid
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Invalid UUID format"

@@ -89,7 +89,7 @@ def buy_credits(request: HttpRequest):
         mail_context = {
             "username": request.user.username,
             "credits": purchase.data["credits"],
-            "receipt_link": reverse("receipt", kwargs={"uid": receipt.uuid})
+            "uuid": receipt.uuid
         }
         html_content = render_to_string(
             template_name="credit_purchase_receipt_email.html",
