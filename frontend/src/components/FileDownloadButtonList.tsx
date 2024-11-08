@@ -62,7 +62,7 @@ export default function FileDownloadButton({ project_id }: Prop) {
             onClick={onClick(product.file)}
             download
           >
-            {trimName(product.file)}
+            Download File
           </a>
         </li>
       ))}

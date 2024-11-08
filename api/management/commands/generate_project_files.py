@@ -29,16 +29,11 @@ class Command(BaseCommand):
         for product in Product.objects.all():
              if (product.categories.contains(malware) \
                 or product.categories.contains(tool)):
-                   for _ in range(randint(1, 3)):
-                         pf = ProductFile(
-                            product=product,
-                            description=product.description
-                        )
-                         fname = product.title.strip(" ") + str(uuid.uuid4())
-                         contents = create_mock_binary_file(product.public)\
-                            .getvalue()
-                         pf.file.save(fname, ContentFile(contents))
-                         pf.save()
+                pf = ProductFile(product=product, description=product.description)
+                fname = product.title.strip(" ") + str(uuid.uuid4())
+                contents = create_mock_binary_file(product.public).getvalue()
+                pf.file.save(fname, ContentFile(contents))
+                pf.save()
 
         
         sys.stdout.write(
