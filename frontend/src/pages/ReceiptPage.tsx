@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import AxiosInstance from "../utils/AxiosInstance";
 import { AxiosResponse } from "axios";
 
-export default function HomePage() {
+export default function ReceiptPage() {
   const [data, setData] = useState("");
   const [searchParams] = useSearchParams();
 
