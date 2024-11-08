@@ -27,8 +27,8 @@ RUN mkdir /home/infobazaar/static/
 RUN mkdir -p /home/infobazaar/media/project_files/
 
 RUN python3 -m pip install -r requirements.txt
-RUN python3 manage.py makemigrations
-RUN python3 manage.py migrate --fake
+# RUN python3 manage.py makemigrations
+# RUN python3 manage.py migrate --fake
 # RUN python3 manage.py migrate
 # RUN python3 manage.py populate
 # RUN python3 manage.py generate_project_files

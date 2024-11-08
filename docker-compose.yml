@@ -1,19 +1,49 @@
-version: "3"
+version: "3.8"
 services:
+  web-proxy:
+    image: nginx:latest
+    container_name: nginx-proxy
+    restart: always
+    ports:
+      - 80:80
+    volumes: ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - infobazaar-net
+
+  mail-server:
+    image: mailhog/mailhog
+    container_name: smtp-server
+    ports:
+      - 8025:8025
+      - 1025:1025
+    networks: -infobazaar-net
+
   webapp:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: infobazaar-app
     restart: always
-    ports:
-      - 8666:8666
+    networks:
+      - infobazaar-net
     tty: true
+    environment:
+      - DJANGO_SUPERUSER_USERNAME="admin"
+      - DJANGO_SUPERUSER_PASSWORD="trad hull town vent bart wish"
+      - DJANGO_SUPERUSER_EMAIL="admin@infobazaar.store"
+      - EMAIL_HOST_USER="informationbazaarstore@gmail.com"
+      - EMAIL_HOST_PASSWORD=""
+      - EMAIL_PORT=1025
+      - EMAIL_HOST=smtp-server
 
   receipts-service:
     build:
       context: ./receipt-env
       dockerfile: Dockerfile
+    container_name: infobazaar-receipt
     restart: always
-    ports:
-      - 8000:8000
     tty: true
+
+networks:
+  infobazaar-net:
+    driver: bridge

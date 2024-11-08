@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosInstance = axios.create({
-  baseURL: "https://www.infobazaar.store/api/",
+  baseURL: "http://infobazaar.local/api/",
   timeout: 10000,
   withCredentials: true,
 });
