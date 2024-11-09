@@ -1,5 +1,6 @@
 import os
 import sys
+import zipfile
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -9,7 +10,7 @@ from io import BytesIO
 from PIL import Image
 from api.models.profile import Profile
 
-DATA_ROOT = settings.BASE_DIR / "data/avatares"
+DATA_ROOT = settings.BASE_DIR / "data/"
 
 class Command(BaseCommand):
     help = "Populates the database with the AI generated profile pictures"
@@ -29,25 +30,24 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **kwargs):
-        files = os.listdir(DATA_ROOT)
-
+        files = zipfile.ZipFile(DATA_ROOT / "avatars.zip")
         c = 0
-        for filename in files:
-            user_id = int(os.path.splitext(filename)[0])
+        for filename in files.namelist():
+            user_id = int(filename.split('.')[0])
             user = User.objects.get(pk=user_id)
             profile = Profile.objects.get(user=user)
             if (len(profile.bio) > 0):
-                file_path = os.path.join(DATA_ROOT, filename)
-
-                resize_image = self.resize_image(file_path)
-                profile.avatar.save(filename, File(resize_image), save=True)
+                data = files.read(filename)
+                bindata = BytesIO(data)
+                bindata.seek(0)
+                profile.avatar.save(filename, File(bindata), save=True)
                 c += 1
 
                 sys.stdout.write
                 (
                     self.style.SUCCESS
                     (
-                        f"Successfully imported {filename} to {user.username}"
+                        f"Successfully imported {filename} to {user.username}\n"
                     )
                 )
                 

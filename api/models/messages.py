@@ -17,4 +17,4 @@ class Message(models.Model):
     
     def save(self, force_insert = ..., force_update = ..., using = ..., update_fields = ...):
         self.encrypt()
-        return super().save(force_insert, force_update, using, update_fields)
+        return super().save()

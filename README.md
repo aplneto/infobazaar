@@ -2,43 +2,25 @@
 
 ## Como usar esse repositório
 
+### Instalação local
+
 Faça o donwload do repositório e uso o arquivo `docker-compose.yml` para
-executar os desafios em uma instância do docker. Você pode também fazer a instalação dos
-desafios manualmente usando as referências no fim deste arquivo.
+executar os desafios em uma instância do docker. O arquivo está configurado para
+executar na porta 80 do seu dispositivo. Caso você queira executar o desafio em
+uma porta diferente da 80, pode ser preciso modifique a linha 8 do arquivo
+**docker-compose.yml*, alterando o valor de `- 80:80` para `- 8000:80`, por
+exemplo, caso queira executar o desafio na porta 80.
 
-## Nginx
+Execute o comando `docker-compose up` para iniciar os servidores do desafio.
 
-```
-server {
-    listen 80
+Por fim, o desafio acessado pelo seu navegador da seguinte forma:
 
-    location /static {
-        alias /var/www/html/static;
-    }
+A aplicação principal fica acessível no endereço [http://localhost/](http://localhost/);
 
-    location /media {
-        alias /var/www/html/media;
-    }
+Qualquer mensagem de e-mail enviada para o domínio `@attacker.local` pode ser
+visualizada em [http://localhost/mail/](http://localhost/mail/);
 
-    location /receipt {
-        proxy_pass http://127.0.0.1:8000;
-    }
-
-    location / {
-        proxy_pass  http://127.0.0.1:8666;
-        include     /etc/nginx/proxy_params;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-
-## MinIO command
-
-## Referências
-
-- https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/gunicorn/
-- https://docs.djangoproject.com/en/5.1/ref/databases/
-- https://min.io/docs/minio/container/index.html
+<details>
+    <summary>SPOILER</summary>
+O servidor de desenvolvimento/backup dos administrador do Infobazaar fica disponível em <a>http://localhost/py/</a>.
+</details>

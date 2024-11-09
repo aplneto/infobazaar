@@ -26,7 +26,6 @@ export default function ConfirmEmailPage() {
 
   const handleClick = (event: FormEvent) => {
     event.preventDefault();
-    console.log(location.state);
     AxiosInstance.post("reset/", {
       username: location.state.username,
       email: location.state.email,

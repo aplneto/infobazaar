@@ -25,9 +25,7 @@ export default function NewPassword() {
   };
 
   const handleClick = (event: FormEvent) => {
-    console.log("NORWEGIAN REGGAETON");
     event.preventDefault();
-    console.log(formData);
     if (formData.password == formData.confirmation) {
       AxiosInstance.post(`reset/${code}/`, formData)
         .then((response: AxiosResponse) => {

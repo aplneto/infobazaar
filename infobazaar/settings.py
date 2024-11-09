@@ -24,13 +24,13 @@ APPNAME = "InfoBazaar"
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DJANGO_DEBUG', 'False') != 'False'
 DEBUG = False
 
-ALLOWED_HOSTS = ["infobazaar.local"]
+ALLOWED_HOSTS = [ os.getenv("REACT_APP_URL") ]
 MAIN_HOST = ALLOWED_HOSTS[0]
 
 # Application definition
@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "infobazaar.middleware.DisableCSRFForAllViewsMiddleware"
+    "infobazaar.middleware.DisableCSRFForAllViewsMiddleware",
 ]
 
 ROOT_URLCONF = 'infobazaar.urls'
@@ -85,23 +85,10 @@ WSGI_APPLICATION = 'infobazaar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
+DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ["DJANGO_DB_NAME"],
-        'USER': os.environ["DJANGO_DB_USER"],
-        'PASSWORD': os.environ["DJANGO_DB_PASSWORD"],
-        'HOST': os.environ["DJANGO_DB_HOST"],
-        'PORT': int(os.environ["DJANGO_DB_PORT"]),
-        'OPTIONS': {'charset': 'utf8mb4'},
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -159,15 +146,15 @@ MEDIA_URL = 'api/media/'
 
 LOGIN_URL = '/api/login/'
 
-EMAIL_HOST = os.environ["EMAIL_HOST"]
-EMAIL_HOST_USER = os.environ["EMAIL_HOST_USER"]
-EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
-EMAIL_PORT = int(os.environ['EMAIL_PORT'])
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', "1052"))
+EMAIL_BACKEND = 'infobazaar.backend.RestrictedDomainEmailBackend'
 
-CORS_ALLOWED_ORIGINS = ["http://infobazaar.local"]
+CORS_ALLOWED_ORIGINS = ["http://" + os.getenv("REACT_APP_URL")]
+CSRF_TRUSTED_ORIGINS = ["http://" + os.getenv("REACT_APP_URL")]
 
-CSRF_TRUSTED_ORIGINS = ["http://infobazaar.local"]
 CSRF_COOKIE_SECURE = False
 
 CORS_ALLOW_CREDENTIALS = True
