@@ -59,7 +59,8 @@ export default function FileDownloadButton({ project_id }: Prop) {
             data-toggle="tooltip"
             data-placement="top"
             title={product.description}
-            onClick={onClick(product.file)}
+            href={product.file}
+            target="_blank"
             download
           >
             Download File

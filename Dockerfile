@@ -12,7 +12,7 @@ FROM python:3.10.12
 
 ENV REACT_APP_URL infobazaar.local
 ENV DJANGO_SUPERUSER_USERNAME admin
-ENV DJANGO_SUPERUSER_PASSWORD trad hull town vent bart wish
+ENV DJANGO_SUPERUSER_PASSWORD "trad hull town vent bart wish"
 ENV DJANGO_SUPERUSER_EMAIL admin@infobazaar.store
 ENV EMAIL_HOST_USER "noreply@$REACT_APP_URL"
 ENV EMAIL_HOST_PASSWORD ""

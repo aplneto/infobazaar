@@ -8,6 +8,7 @@ services:
       - 80:80
     volumes: 
     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    - media:/var/media
     networks:
       - infobazaar-net
     depends_on:
@@ -33,6 +34,8 @@ services:
     networks:
       - infobazaar-net
     tty: true
+    volumes:
+      - media:/home/infobazaar/media
 
   django-app:
     build:
@@ -47,3 +50,6 @@ services:
 networks:
   infobazaar-net:
     driver: bridge
+
+volumes:
+  media:

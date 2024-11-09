@@ -24,3 +24,7 @@ visualizada em [http://localhost/mail/](http://localhost/mail/);
     <summary>SPOILER</summary>
 O servidor de desenvolvimento/backup dos administrador do Infobazaar fica disponível em <a>http://localhost/py/</a>.
 </details>
+
+## Referências
+
+- [Write up](/write-up.md)

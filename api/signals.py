@@ -50,7 +50,8 @@ def send_receipt(sender: ..., instance: Receipt, created: bool, **kwargs):
         purchase_context = {
             "appname": settings.APPNAME,
             "username": instance.buyer.username,
-            "product": instance.product.title
+            "product": instance.product.title,
+            "receipt": instance.product.transaction_code,
         }
 
         html_content = render_to_string(
