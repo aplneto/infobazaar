@@ -54,7 +54,7 @@ class ProductFile(models.Model):
         unique_together = (('product', 'id'))
 
     def __str__(self):
-        return f"{self.file.name}: ({self.file.size})"
+        return f"{self.file.name}"
 
 class Receipt(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)

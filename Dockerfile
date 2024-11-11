@@ -5,7 +5,6 @@ ADD ./frontend/ /home/frontend/
 WORKDIR /home/frontend/
 
 RUN npm instal --save axios
-RUN npm install typescript -g
 RUN npm run build
 
 FROM python:3.10.12
@@ -38,6 +37,4 @@ RUN python3 manage.py import_pictures
 RUN python3 manage.py collectstatic --no-input
 RUN python3 manage.py createsuperuser --no-input
 
-EXPOSE 8666
-
-ENTRYPOINT [ "gunicorn", "--workers", "3", "--bind", "0.0.0.0:8666", "infobazaar.wsgi:application" ]
+ENTRYPOINT [ "python3", "manage.py", "runserver", "0.0.0.0:8000" ]

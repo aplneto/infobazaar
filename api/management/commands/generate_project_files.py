@@ -24,17 +24,19 @@ class Command(BaseCommand):
     help = "Populates the filebase with random mock data files"
 
     def handle(self, *args, **kwargs):
+        success = lambda x: sys.stdout.write(self.style.SUCCESS(x))
         malware = Category.objects.get(name="malware")
         tool = Category.objects.get(name="tool")
         for product in Product.objects.all():
+            if not (product.categories.contains(malware) \
+                    or product.categories.contains(tool)):
+                continue
             pf = ProductFile(product=product, description=product.description)
-            fname = product.title.strip(" ") + str(uuid.uuid4())
+            fname = product.title.strip() + ".dat"
             contents = create_mock_binary_file(product.public).getvalue()
             pf.file.save(fname, ContentFile(contents))
             pf.save()
+            success(f"{fname} => {pf.file.path} => {pf.file.url}\n")
 
-        
-        sys.stdout.write(
-            self.style.SUCCESS(f"Sucessfully added files to the products")
-        )
+        success(f"Sucessfully added files to the products")
                         

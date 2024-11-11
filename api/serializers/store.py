@@ -26,7 +26,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ProductFileSerializer(serializers.ModelSerializer):
     product = serializers.SlugRelatedField(read_only=True, slug_field="title")
-    file = serializers.SerializerMethodField("file_url")
     class Meta:
         model = ProductFile
         fields = "__all__"
