@@ -30,3 +30,4 @@ O servidor de desenvolvimento/backup dos administrador do Infobazaar fica dispon
 ## Referências
 
 - [Write up](/write-up.md)
+- [Cyberpol e KendrickLanDesktop](https://github.com/Shinji-Mimura/KendrickLanDesktop-CyberPolAPI)
