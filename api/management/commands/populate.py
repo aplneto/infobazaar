@@ -1,6 +1,6 @@
+import base64
 import datetime
 import json
-import os
 import time
 import uuid
 
@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from django.db.models import Model
 from random import random
+from api.crypto import encrypt
 
 DATA_ROOT = settings.BASE_DIR / 'data/'
 
@@ -142,7 +143,12 @@ class Command(BaseCommand):
         with open(DATA_ROOT / "messages.json", 'r') as messages_json:
             messages_aray = json.load(messages_json)
             for message in messages_aray:
-                m = Message(content = json.dumps(message))
+                c = encrypt(
+                    json.dumps(message).encode(), 
+                    settings.CRYPTO_KEY,
+                    settings.CRYPTO_NONCE
+                )
+                m = Message(content = base64.urlsafe_b64encode(c).decode())
                 all_messages.append(m)
         
         Message.objects.bulk_create(all_messages)

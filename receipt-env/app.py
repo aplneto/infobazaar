@@ -17,16 +17,19 @@ def get():
 def download_page():
     ticket = request.args.get("uuid", None)
     if (ticket):
-        ticket_url = f"https://www.infobazaar.store/api/purchase/{ticket}/"
-        response = requests.get(ticket_url)
-        print("OK")
+        ticket_url = f"http://nginx-proxy/api/purchase/{ticket}"
+        response = requests.get(
+            ticket_url,
+            headers={"Host": "infobazaar.local"},
+            allow_redirects=True
+        )
         if response.status_code == 200:
-            print(response.content)
             cipher_text = base64.urlsafe_b64decode(response.content)
             plain_bytes = decrypt(cipher_text, CRYPTO_KEY, CRYPTO_NONCE)
+            print(plain_bytes)
             try:
                 receipt = pickle.loads(plain_bytes)
-                # Continue
+
             except Exception as error:
                 print(plain_bytes)
                 return app.response_class(repr(error), status=500)

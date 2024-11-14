@@ -32,7 +32,7 @@ class Command(BaseCommand):
                     or product.categories.contains(tool)):
                 continue
             pf = ProductFile(product=product, description=product.description)
-            fname = product.title.strip() + ".dat"
+            fname = product.title.strip() + str(uuid.uuid4())+ ".dat"
             contents = create_mock_binary_file(product.public).getvalue()
             pf.file.save(fname, ContentFile(contents))
             pf.save()

